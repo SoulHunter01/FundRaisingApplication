@@ -38,8 +38,6 @@ public class LoginScreen extends AppCompatActivity {
         password=findViewById(R.id.password);
         loginbutton=findViewById(R.id.loginbutton);
         registrationintent=findViewById(R.id.registrationintent);
-        fb=findViewById(R.id.fb);
-
         registrationintent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "876233921635",
+    "project_id": "fundraisingapplication-fdb92",
+    "storage_bucket": "fundraisingapplication-fdb92.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:876233921635:android:c978b218da3c0e09079456",
+        "android_client_info": {
+          "package_name": "com.code.fundraisingapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "876233921635-fs8kbskhotc1q43i6fbhrvn79bhqmiiu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCS-ZV7lPSrCy8oiiqaHypECsS8GHiWyJg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "876233921635-fs8kbskhotc1q43i6fbhrvn79bhqmiiu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

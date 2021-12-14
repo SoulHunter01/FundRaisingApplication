@@ -1,10 +1,12 @@
 package com.code.fundraisingapplication;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -12,7 +14,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class CreateGoal extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
+    private static final String TAG = "X1212";
     Spinner spinner;
     String category;
     EditText title;
@@ -41,10 +54,38 @@ public class CreateGoal extends AppCompatActivity implements AdapterView.OnItemS
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(CreateGoal.this, RecyclerViewList.class);
-                intent.putExtra("Title",title.getText().toString());
-                intent.putExtra("Description",description.getText().toString());
-                intent.putExtra("TargetAmount",targetamount.getText().toString());
-                intent.putExtra("Category",category);
+
+
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
+                // Create a new user with a first and last name
+                Map<String, Object> user = new HashMap<>();
+                user.put("Title",title.getText().toString());
+                user.put("Description",description.getText().toString());
+                user.put("TargetAmount",targetamount.getText().toString());
+                user.put("Category",category);
+
+
+// Add a new document with a generated ID
+                db.collection("GoalInformation")
+                        .add(user)
+                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                            @Override
+                            public void onSuccess(DocumentReference documentReference) {
+                                Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.w(TAG, "Error adding document", e);
+                            }
+                        });
+
+
+
+
+
+
                 startActivity(intent);
             }
         });

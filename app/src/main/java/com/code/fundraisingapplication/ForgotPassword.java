@@ -21,8 +21,9 @@ public class ForgotPassword extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot_password);
         email_for_password=findViewById(R.id.email_for_password);
+        String email=email_for_password.getText().toString();
 
-        FirebaseAuth.getInstance().sendPasswordResetEmail(email_for_password.getText().toString())
+        FirebaseAuth.getInstance().sendPasswordResetEmail(email)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {

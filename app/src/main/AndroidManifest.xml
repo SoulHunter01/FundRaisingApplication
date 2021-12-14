@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FundRaisingApplication">
         <activity
+            android:name=".RecyclerViewList"
+            android:exported="false" />
+        <activity
+            android:name=".CreateGoal"
+            android:exported="false" />
+        <activity
             android:name=".ForgotPassword"
             android:exported="false" />
         <activity
@@ -26,6 +32,7 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

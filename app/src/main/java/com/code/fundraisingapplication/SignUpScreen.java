@@ -76,7 +76,7 @@ public class SignUpScreen extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         Toast.makeText(SignUpScreen.this,"New User Created...",Toast.LENGTH_LONG).show();
-                        Intent intent=new Intent(SignUpScreen.this,MainActivity.class);
+                        Intent intent=new Intent(SignUpScreen.this,LoginScreen.class);
                         startActivity(intent);
                     }
                 }).addOnFailureListener(new OnFailureListener() {

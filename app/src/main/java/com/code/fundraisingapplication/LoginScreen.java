@@ -17,9 +17,11 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LoginScreen extends AppCompatActivity {
 
+    private static final String TAG = null;
     FirebaseAuth mAuth;
     EditText username;
     EditText password;
@@ -51,18 +53,20 @@ public class LoginScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                mAuth.signInWithEmailAndPassword(String.valueOf(username),String.valueOf(password)).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+
+                mAuth.signInWithEmailAndPassword(username.getText().toString(),password.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        Intent intent=new Intent(LoginScreen.this,MainScreen.class);
-                        Toast.makeText(LoginScreen.this,"Current User  Is Logged In",Toast.LENGTH_LONG).show();
+                        Log.d(TAG, "createUserWithEmail:success");
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        Intent intent=new Intent(LoginScreen.this,CreateGoal.class);
                         startActivity(intent);
-
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(LoginScreen.this,"Wrong Email or Password",Toast.LENGTH_LONG).show();
+                        Log.e("123","Failed To Authenticate");
+                        Toast.makeText(LoginScreen.this,"Authentication Failed",Toast.LENGTH_LONG).show();
                     }
                 });
 
@@ -70,7 +74,6 @@ public class LoginScreen extends AppCompatActivity {
 
             }
         });
-
 
         forgotpassword.setOnClickListener(new View.OnClickListener() {
             @Override

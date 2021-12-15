@@ -2,9 +2,15 @@ package com.code.fundraisingapplication;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -20,18 +26,23 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.onesignal.OneSignal;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class CreateGoal extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
     private static final String TAG = "X1212";
+    private static final String ONESIGNAL_APP_ID = "d704ffce-b306-4eba-b958-c3583bdec538";
+
     Spinner spinner;
     String category;
     EditText title;
     EditText description;
     EditText targetamount;
     Button creategoal;
+
+
 
     private static final String[] paths = {"Education","Climate Change","Medical Support"};
     @Override
@@ -63,6 +74,7 @@ public class CreateGoal extends AppCompatActivity implements AdapterView.OnItemS
                 user.put("Description",description.getText().toString());
                 user.put("TargetAmount",targetamount.getText().toString());
                 user.put("Category",category);
+                user.put("Status","Active");
 
 
 // Add a new document with a generated ID
@@ -82,6 +94,10 @@ public class CreateGoal extends AppCompatActivity implements AdapterView.OnItemS
                         });
 
 
+                OneSignal.setLogLevel(OneSignal.LOG_LEVEL.VERBOSE, OneSignal.LOG_LEVEL.NONE);
+                // OneSignal Initialization
+                OneSignal.initWithContext(CreateGoal.this);
+                OneSignal.setAppId(ONESIGNAL_APP_ID);
 
 
 
@@ -115,7 +131,6 @@ public class CreateGoal extends AppCompatActivity implements AdapterView.OnItemS
     }
 
 
-
-
 }
+
 

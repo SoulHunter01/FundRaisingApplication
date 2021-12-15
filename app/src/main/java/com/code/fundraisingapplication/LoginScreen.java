@@ -59,7 +59,7 @@ public class LoginScreen extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         Log.d(TAG, "createUserWithEmail:success");
                         FirebaseUser user = mAuth.getCurrentUser();
-                        Intent intent=new Intent(LoginScreen.this,CreateGoal.class);
+                        Intent intent=new Intent(LoginScreen.this,MainScreen_Tabs.class);
                         startActivity(intent);
                     }
                 }).addOnFailureListener(new OnFailureListener() {

@@ -6,7 +6,10 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.widget.EditText;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -20,6 +23,7 @@ public class RecyclerViewList extends AppCompatActivity {
     private static final String TAG = "XA1212";
     RecyclerView rv;
     ArrayList<ImageClass> ls;
+    EditText sh;
     RecyclerViewAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +31,25 @@ public class RecyclerViewList extends AppCompatActivity {
         setContentView(R.layout.activity_recycler_view_list);
         rv=findViewById(R.id.rv);
         ls=new ArrayList<>();
+
+        sh = (EditText) findViewById(R.id.sh);
+
+        sh.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                filter(editable.toString());
+            }
+        });
 
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -66,5 +89,17 @@ public class RecyclerViewList extends AppCompatActivity {
 
 
 
+    }
+
+    private void filter(String text) {
+        ArrayList<ImageClass> filteredList = new ArrayList<>();
+
+        for (ImageClass item : ls) {
+            if (item.getGoal_title().toLowerCase().contains(text.toLowerCase())) {
+                filteredList.add(item);
+            }
+        }
+
+        adapter.filterList(filteredList);
     }
 }

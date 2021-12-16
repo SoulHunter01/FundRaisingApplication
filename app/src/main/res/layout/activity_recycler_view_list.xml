@@ -6,12 +6,26 @@
     android:layout_height="wrap_content"
     tools:context=".RecyclerViewList">
 
+    <EditText
+        android:id="@+id/sh"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginTop="50dp"
+        android:background="@color/browser_actions_bg_grey"
+        android:hint="Search Here"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        tools:ignore="MissingConstraints"></EditText>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv"
         android:layout_width="409dp"
-        android:layout_height="729dp"
+        android:layout_height="679dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sh"
         tools:layout_editor_absoluteY="1dp"
         tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>

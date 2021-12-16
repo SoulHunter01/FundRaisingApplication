@@ -3,6 +3,7 @@ package com.code.fundraisingapplication;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Notification;
@@ -57,6 +58,12 @@ public class CreateGoal extends AppCompatActivity implements AdapterView.OnItemS
         ArrayAdapter<String>adapter = new ArrayAdapter<String>(CreateGoal.this,
                 android.R.layout.simple_spinner_item,paths);
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel("Notif", "Notif", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationManager manager = getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(channel);
+        }
+
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
@@ -99,8 +106,15 @@ public class CreateGoal extends AppCompatActivity implements AdapterView.OnItemS
                 OneSignal.initWithContext(CreateGoal.this);
                 OneSignal.setAppId(ONESIGNAL_APP_ID);
 
+                NotificationCompat.Builder builder = new NotificationCompat.Builder(CreateGoal.this, "Generating Goal")
+                        .setSmallIcon(R.drawable.tick)
+                        .setContentTitle("Goal Created")
+                        .setContentTitle("Goal created successfully and fundings will start to arrive soon.")
+                        .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+                builder.setAutoCancel(true);
 
-
+                NotificationManagerCompat managerCompat = NotificationManagerCompat.from(CreateGoal.this);
+                managerCompat.notify(1, builder.build());
 
                 startActivity(intent);
             }

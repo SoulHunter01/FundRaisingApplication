@@ -45,6 +45,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         final String[] get_description_from_recycler = {null};
         final String[] get_category_from_recyler = {null};
         final String[] get_target_amount_from_recycler = {null};
+        final String[] get_status_from_recycler={null};
 
 
 
@@ -52,6 +53,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.Goal_title.setText(ls.get(position).getGoal_title());
         holder.Goal_targetamount.setText(ls.get(position).getGoal_targetamount());
         holder.Goal_category.setText(ls.get(position).getGoal_category());
+        holder.Goal_status.setText(ls.get(position).getGoal_status());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,12 +63,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     get_description_from_recycler[0] =ls.get(pos).getGoal_short_description();
                     get_category_from_recyler[0] =ls.get(pos).getGoal_category();
                     get_target_amount_from_recycler[0] =ls.get(pos).getGoal_targetamount();
+                    get_status_from_recycler[0]=ls.get(pos).getGoal_status();
 
                     Intent intent=new Intent(c,RecyclerViewSpecificItem.class);
                     intent.putExtra("Title",get_title_from_recycler[0]);
                     intent.putExtra("Description",get_description_from_recycler[0]);
                     intent.putExtra("Category",get_category_from_recyler[0]);
                     intent.putExtra("TargetAmount",get_target_amount_from_recycler[0]);
+                    intent.putExtra("Status",get_status_from_recycler[0]);
 
                     v.getContext().startActivity(intent);
                 }
@@ -97,6 +101,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         TextView Goal_title;
         TextView Goal_targetamount;
         TextView Goal_category;
+        TextView Goal_status;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -104,6 +109,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             Goal_title=itemView.findViewById(R.id.title);
             Goal_targetamount=itemView.findViewById(R.id.targetamount);
             Goal_category=itemView.findViewById(R.id.category);
+            Goal_status=itemView.findViewById(R.id.status);
 
         }
 

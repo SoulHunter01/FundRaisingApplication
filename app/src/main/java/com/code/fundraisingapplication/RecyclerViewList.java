@@ -10,6 +10,8 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -24,6 +26,7 @@ public class RecyclerViewList extends AppCompatActivity {
     RecyclerView rv;
     ArrayList<ImageClass> ls;
     EditText sh;
+    public static String goalname;
     RecyclerViewAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +36,8 @@ public class RecyclerViewList extends AppCompatActivity {
         ls=new ArrayList<>();
 
         sh = (EditText) findViewById(R.id.sh);
+
+        sh.setText(goalname);
 
         sh.addTextChangedListener(new TextWatcher() {
             @Override
@@ -65,7 +70,7 @@ public class RecyclerViewList extends AppCompatActivity {
                                 String getDescription=(String)document.getData().get("Description");
                                 String getTargetAmount=(String)document.getData().get("TargetAmount");
                                 String getStatus=(String)document.getData().get("Status");
-                                ls.add(new ImageClass(getResources().getDrawable(R.drawable.goal),getTitle,getDescription,getTargetAmount,getCategory,getStatus));
+                                ls.add(new ImageClass(getResources().getDrawable(R.drawable.logo),getTitle,getDescription,getTargetAmount,getCategory,getStatus));
                                 RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(RecyclerViewList.this, 1);
                                 rv.setLayoutManager(mLayoutManager);
                                 adapter = new RecyclerViewAdapter(ls,RecyclerViewList.this);

@@ -28,7 +28,6 @@ public class MainScreen_Tabs extends AppCompatActivity {
         creategoalbutton=findViewById(R.id.creategoalbutton);
         ChangeActiveStatus=findViewById(R.id.ChangeActiveStatus);
         btn_scan = (Button) findViewById(R.id.btn_scan);
-        show_ad = (Button) findViewById(R.id.show_ad);
 
         AdView adView = new AdView(this);
 

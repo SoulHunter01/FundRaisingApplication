@@ -71,14 +71,14 @@
         android:id="@+id/status"
         android:layout_width="205dp"
         android:layout_height="40dp"
-        android:textSize="30dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textColor="@color/black"
-        android:textStyle="bold"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="70dp" />
+        android:textSize="15dp"
+        android:textStyle="bold" />
 
 
 </RelativeLayout>

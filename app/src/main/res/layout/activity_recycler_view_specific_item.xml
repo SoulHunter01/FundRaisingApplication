@@ -35,10 +35,10 @@
 
     <TextView
         android:id="@+id/title_of_goal"
-        android:layout_width="200dp"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="200dp"
-        android:layout_marginLeft="100dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="180dp"
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textSize="40dp"
@@ -47,11 +47,11 @@
     <TextView
         android:id="@+id/description_of_goal"
         android:layout_width="300dp"
-        android:layout_height="175dp"
+        android:layout_height="105dp"
         android:layout_marginLeft="50dp"
-        android:layout_marginTop="270dp"
+        android:layout_marginTop="240dp"
         android:textAlignment="center"
-        android:textSize="30dp"
+        android:textSize="20dp"
         android:textStyle="bold"
         tools:ignore="MissingConstraints" />
 
@@ -59,36 +59,48 @@
         android:id="@+id/status_of_goal"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:textAllCaps="true"
-        android:textSize="20dp"
-        android:textAlignment="center"
-        android:textAppearance="@color/black"
         android:layout_marginLeft="50dp"
-        android:layout_marginTop="500dp"></TextView>
+        android:layout_marginTop="400dp"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textAppearance="@color/black"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:textStyle="bold"></TextView>
 
     <TextView
         android:id="@+id/category_of_goal"
         android:layout_width="150dp"
         android:layout_height="50dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="500dp"
         android:textAlignment="center"
-        android:textSize="30dp"
+        android:textSize="20dp"
         android:textStyle="bold"
-        tools:ignore="MissingConstraints"
-        android:layout_marginTop="600dp"
-        android:layout_marginLeft="20dp"/>
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/targetamount_of_goal"
         android:layout_width="150dp"
         android:layout_height="50dp"
+        android:layout_marginLeft="230dp"
+        android:layout_marginTop="500dp"
         android:textAlignment="center"
-        android:textSize="30dp"
+        android:textSize="20dp"
         android:textStyle="bold"
-        tools:ignore="MissingConstraints"
-        android:layout_marginTop="600dp"
-        android:layout_marginLeft="200dp"></TextView>
+        tools:ignore="MissingConstraints"></TextView>
+
+    <Button
+        android:id="@+id/applypayment"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="570dp"
+        android:backgroundTint="@color/black"
+        android:text="Apply Payment Via Firebase"
+
+        android:textColor="@color/white"></Button>
 
 
 </RelativeLayout>

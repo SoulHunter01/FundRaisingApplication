@@ -46,9 +46,11 @@ public class RecyclerViewSpecificItem extends AppCompatActivity {
     TextView status_of_goal;
     Button changegoalstatus;
     Button applypayment;
+    Button generate_QR;
     final String[] Status_Value = {null};
 
     String title_get = null;
+    public static String qr_title;
     String description_get = null;
     String category_get = null;
     String targetamount_get = null;
@@ -66,12 +68,14 @@ public class RecyclerViewSpecificItem extends AppCompatActivity {
         changegoalstatus = findViewById(R.id.changegoalstatus);
         status_of_goal = findViewById(R.id.status_of_goal);
         applypayment = findViewById(R.id.applypayment);
+        generate_QR = findViewById(R.id.generate_QR);
 
         Intent intent = getIntent();
 
 
 
         title_get = intent.getStringExtra("Title");
+        qr_title = title_get;
         description_get = intent.getStringExtra("Description");
         category_get = intent.getStringExtra("Category");
         targetamount_get = intent.getStringExtra("TargetAmount");
@@ -82,6 +86,14 @@ public class RecyclerViewSpecificItem extends AppCompatActivity {
         category_of_goal.setText(category_get);
         targetamount_of_goal.setText(targetamount_get);
         status_of_goal.setText(status_get);
+
+        generate_QR.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(RecyclerViewSpecificItem.this,generate_QR_Code.class);
+                startActivity(intent);
+            }
+        });
 
 
         changegoalstatus.setOnClickListener(new View.OnClickListener() {
@@ -181,7 +193,6 @@ public class RecyclerViewSpecificItem extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 String getTitle = (String) document.getData().get("Title");
-
                                 if (getTitle.equals(title_of_goal.getText().toString())) {
                                     String targetAmount = (String) document.getData().get("TargetAmount");
                                     targetamount_of_goal.setText(targetAmount);

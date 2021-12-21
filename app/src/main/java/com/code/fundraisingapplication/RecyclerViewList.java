@@ -52,7 +52,7 @@ public class RecyclerViewList extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                filter(editable.toString());
+                    filter(editable.toString());
             }
         });
 

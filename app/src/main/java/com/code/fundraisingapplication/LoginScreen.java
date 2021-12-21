@@ -53,24 +53,32 @@ public class LoginScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                if(!username.getText().toString().equals("") || !password.getText().toString().equals("")) {
+                    mAuth.signInWithEmailAndPassword(username.getText().toString(), password.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                Log.d(TAG, "createUserWithEmail:success");
+                                FirebaseUser user = mAuth.getCurrentUser();
+                                Intent intent = new Intent(LoginScreen.this, MainScreen_Tabs.class);
+                                startActivity(intent);
+                            } else {
+                                Toast.makeText(LoginScreen.this, "Credentials Not Correct", Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.e("123", "Failed To Authenticate");
+                            Toast.makeText(LoginScreen.this, "Authentication Failed", Toast.LENGTH_LONG).show();
+                        }
+                    });
 
-                mAuth.signInWithEmailAndPassword(username.getText().toString(),password.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        Log.d(TAG, "createUserWithEmail:success");
-                        FirebaseUser user = mAuth.getCurrentUser();
-                        Intent intent=new Intent(LoginScreen.this,MainScreen_Tabs.class);
-                        startActivity(intent);
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.e("123","Failed To Authenticate");
-                        Toast.makeText(LoginScreen.this,"Authentication Failed",Toast.LENGTH_LONG).show();
-                    }
-                });
-
-
+                }
+                else{
+                    username.setError("Fill In Username");
+                    password.setError("Fill In Password");
+                }
 
             }
         });

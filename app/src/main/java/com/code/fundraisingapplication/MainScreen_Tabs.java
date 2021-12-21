@@ -1,18 +1,26 @@
 package com.code.fundraisingapplication;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.google.firebase.database.core.view.Change;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
 public class MainScreen_Tabs extends AppCompatActivity {
     Button creategoalbutton;
     Button ChangeActiveStatus;
     Button btn_scan;
+    Button show_ad;
+    private AdView mAdView1;
+    private AdView mAdView2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +28,27 @@ public class MainScreen_Tabs extends AppCompatActivity {
         creategoalbutton=findViewById(R.id.creategoalbutton);
         ChangeActiveStatus=findViewById(R.id.ChangeActiveStatus);
         btn_scan = (Button) findViewById(R.id.btn_scan);
+        show_ad = (Button) findViewById(R.id.show_ad);
+
+        AdView adView = new AdView(this);
+
+        adView.setAdSize(AdSize.BANNER);
+
+        adView.setAdUnitId("ca-app-pub-3940256099942544/6300978111");
+
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+
+        mAdView1 = findViewById(R.id.ad1);
+        AdRequest adRequest1 = new AdRequest.Builder().build();
+        mAdView1.loadAd(adRequest1);
+
+        mAdView2 = findViewById(R.id.ad2);
+        AdRequest adRequest2 = new AdRequest.Builder().build();
+        mAdView2.loadAd(adRequest2);
 
         creategoalbutton.setOnClickListener(new View.OnClickListener() {
             @Override

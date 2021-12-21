@@ -3,11 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidStudioProjects/FundRaisingApplication/app/src/main/res/layout/activity_ads.xml" value="0.22447916666666667" />
         <entry key="..\:/AndroidStudioProjects/FundRaisingApplication/app/src/main/res/layout/activity_create_goal.xml" value="0.22447916666666667" />
         <entry key="..\:/AndroidStudioProjects/FundRaisingApplication/app/src/main/res/layout/activity_generate_qr_code.xml" value="0.22447916666666667" />
         <entry key="..\:/AndroidStudioProjects/FundRaisingApplication/app/src/main/res/layout/activity_main.xml" value="0.22447916666666667" />
         <entry key="..\:/AndroidStudioProjects/FundRaisingApplication/app/src/main/res/layout/activity_main_screen.xml" value="0.22447916666666667" />
-        <entry key="..\:/AndroidStudioProjects/FundRaisingApplication/app/src/main/res/layout/activity_main_screen_tabs.xml" value="0.22447916666666667" />
+        <entry key="..\:/AndroidStudioProjects/FundRaisingApplication/app/src/main/res/layout/activity_main_screen_tabs.xml" value="0.33" />
         <entry key="..\:/AndroidStudioProjects/FundRaisingApplication/app/src/main/res/layout/activity_payment_screen.xml" value="0.2" />
         <entry key="..\:/AndroidStudioProjects/FundRaisingApplication/app/src/main/res/layout/activity_qr_scan_code.xml" value="0.22447916666666667" />
         <entry key="..\:/AndroidStudioProjects/FundRaisingApplication/app/src/main/res/layout/activity_qr_scanner.xml" value="0.22447916666666667" />

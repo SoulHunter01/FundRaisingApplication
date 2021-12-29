@@ -46,11 +46,11 @@
         android:layout_height="50dp"
         android:layout_marginLeft="100dp"
         android:layout_marginTop="450dp"
-        android:textAlignment="center"
         android:hint="Your Contribution..."
-        android:textSize="20dp"
-        android:textColor="@color/black"
+        android:textAlignment="center"
         android:textAllCaps="true"
+        android:textColor="@color/black"
+        android:textSize="20dp"
         android:textStyle="bold"
         tools:ignore="MissingConstraints" />
 

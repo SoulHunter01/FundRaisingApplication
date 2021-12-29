@@ -70,7 +70,7 @@ public class RecyclerViewList extends AppCompatActivity {
                                 String getDescription=(String)document.getData().get("Description");
                                 String getTargetAmount=(String)document.getData().get("TargetAmount");
                                 String getStatus=(String)document.getData().get("Status");
-                                ls.add(new ImageClass(getResources().getDrawable(R.drawable.logo),getTitle,getDescription,getTargetAmount,getCategory,getStatus));
+                                ls.add(new ImageClass(getResources().getDrawable(R.drawable.goal),getTitle,getDescription,getTargetAmount,getCategory,getStatus));
                                 RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(RecyclerViewList.this, 1);
                                 rv.setLayoutManager(mLayoutManager);
                                 adapter = new RecyclerViewAdapter(ls,RecyclerViewList.this);

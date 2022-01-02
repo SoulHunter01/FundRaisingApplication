@@ -3,23 +3,23 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Abdullah Ihsan/AndroidStudioProjects/FundRaising/FundRaisingApplication/app/src/main/res/drawable/circle.xml" value="0.11794871794871795" />
-        <entry key="..\:/Users/Abdullah Ihsan/AndroidStudioProjects/FundRaising/FundRaisingApplication/app/src/main/res/drawable/rounded.xml" value="0.21837606837606838" />
-        <entry key="..\:/Users/Abdullah Ihsan/AndroidStudioProjects/FundRaising/FundRaisingApplication/app/src/main/res/drawable/rounded_bars.xml" value="0.11794871794871795" />
-        <entry key="..\:/Users/Abdullah Ihsan/AndroidStudioProjects/FundRaising/FundRaisingApplication/app/src/main/res/drawable/rounded_start.xml" value="0.21837606837606838" />
-        <entry key="..\:/Users/Abdullah Ihsan/AndroidStudioProjects/FundRaising/FundRaisingApplication/app/src/main/res/layout/activity_create_goal.xml" value="0.264" />
-        <entry key="..\:/Users/Abdullah Ihsan/AndroidStudioProjects/FundRaising/FundRaisingApplication/app/src/main/res/layout/activity_forgot_password.xml" value="0.20512820512820512" />
-        <entry key="..\:/Users/Abdullah Ihsan/AndroidStudioProjects/FundRaising/FundRaisingApplication/app/src/main/res/layout/activity_login_screen.xml" value="0.20512820512820512" />
-        <entry key="..\:/Users/Abdullah Ihsan/AndroidStudioProjects/FundRaising/FundRaisingApplication/app/src/main/res/layout/activity_main.xml" value="0.20512820512820512" />
-        <entry key="..\:/Users/Abdullah Ihsan/AndroidStudioProjects/FundRaising/FundRaisingApplication/app/src/main/res/layout/activity_main_screen.xml" value="0.20512820512820512" />
-        <entry key="..\:/Users/Abdullah Ihsan/AndroidStudioProjects/FundRaising/FundRaisingApplication/app/src/main/res/layout/activity_main_screen_tabs.xml" value="0.2" />
-        <entry key="..\:/Users/Abdullah Ihsan/AndroidStudioProjects/FundRaising/FundRaisingApplication/app/src/main/res/layout/activity_payment_screen.xml" value="0.2125" />
-        <entry key="..\:/Users/Abdullah Ihsan/AndroidStudioProjects/FundRaising/FundRaisingApplication/app/src/main/res/layout/activity_payment_screen2.xml" value="0.20512820512820512" />
-        <entry key="..\:/Users/Abdullah Ihsan/AndroidStudioProjects/FundRaising/FundRaisingApplication/app/src/main/res/layout/activity_recycler_view_list.xml" value="0.12760416666666666" />
-        <entry key="..\:/Users/Abdullah Ihsan/AndroidStudioProjects/FundRaising/FundRaisingApplication/app/src/main/res/layout/activity_recycler_view_specific_item.xml" value="0.2125" />
-        <entry key="..\:/Users/Abdullah Ihsan/AndroidStudioProjects/FundRaising/FundRaisingApplication/app/src/main/res/layout/activity_sign_up_screen.xml" value="0.20512820512820512" />
-        <entry key="..\:/Users/Abdullah Ihsan/AndroidStudioProjects/FundRaising/FundRaisingApplication/app/src/main/res/layout/fragment_blank.xml" value="0.19230769230769232" />
-        <entry key="..\:/Users/Abdullah Ihsan/AndroidStudioProjects/FundRaising/FundRaisingApplication/app/src/main/res/layout/row.xml" value="0.264" />
+        <entry key="..\:/AndroidStudioProjects/FundRaisingApplication/app/src/main/res/layout/activity_ads.xml" value="0.22447916666666667" />
+        <entry key="..\:/AndroidStudioProjects/FundRaisingApplication/app/src/main/res/layout/activity_create_goal.xml" value="0.22447916666666667" />
+        <entry key="..\:/AndroidStudioProjects/FundRaisingApplication/app/src/main/res/layout/activity_generate_qr_code.xml" value="0.22447916666666667" />
+        <entry key="..\:/AndroidStudioProjects/FundRaisingApplication/app/src/main/res/layout/activity_login_screen.xml" value="0.22447916666666667" />
+        <entry key="..\:/AndroidStudioProjects/FundRaisingApplication/app/src/main/res/layout/activity_main.xml" value="0.22447916666666667" />
+        <entry key="..\:/AndroidStudioProjects/FundRaisingApplication/app/src/main/res/layout/activity_main_screen.xml" value="0.22447916666666667" />
+        <entry key="..\:/AndroidStudioProjects/FundRaisingApplication/app/src/main/res/layout/activity_main_screen_tabs.xml" value="0.33" />
+        <entry key="..\:/AndroidStudioProjects/FundRaisingApplication/app/src/main/res/layout/activity_payment_activity.xml" value="0.10989583333333333" />
+        <entry key="..\:/AndroidStudioProjects/FundRaisingApplication/app/src/main/res/layout/activity_payment_method.xml" value="0.22447916666666667" />
+        <entry key="..\:/AndroidStudioProjects/FundRaisingApplication/app/src/main/res/layout/activity_payment_screen.xml" value="0.2" />
+        <entry key="..\:/AndroidStudioProjects/FundRaisingApplication/app/src/main/res/layout/activity_payment_screen2.xml" value="0.22447916666666667" />
+        <entry key="..\:/AndroidStudioProjects/FundRaisingApplication/app/src/main/res/layout/activity_qr_scan_code.xml" value="0.22447916666666667" />
+        <entry key="..\:/AndroidStudioProjects/FundRaisingApplication/app/src/main/res/layout/activity_qr_scanner.xml" value="0.22447916666666667" />
+        <entry key="..\:/AndroidStudioProjects/FundRaisingApplication/app/src/main/res/layout/activity_recycler_view_list.xml" value="0.22447916666666667" />
+        <entry key="..\:/AndroidStudioProjects/FundRaisingApplication/app/src/main/res/layout/activity_recycler_view_specific_item.xml" value="0.22447916666666667" />
+        <entry key="..\:/AndroidStudioProjects/FundRaisingApplication/app/src/main/res/layout/activity_sign_up_screen.xml" value="0.22447916666666667" />
+        <entry key="..\:/AndroidStudioProjects/FundRaisingApplication/app/src/main/res/layout/row.xml" value="0.22447916666666667" />
         <entry key="..\:/Users/Abdullah Ihsan/AndroidStudioProjects/FundRaisingApplication/app/src/main/res/layout/activity_create_goal.xml" value="0.264" />
         <entry key="..\:/Users/Abdullah Ihsan/AndroidStudioProjects/FundRaisingApplication/app/src/main/res/layout/activity_forgot_password.xml" value="0.22708333333333333" />
         <entry key="..\:/Users/Abdullah Ihsan/AndroidStudioProjects/FundRaisingApplication/app/src/main/res/layout/activity_login_screen.xml" value="0.264" />

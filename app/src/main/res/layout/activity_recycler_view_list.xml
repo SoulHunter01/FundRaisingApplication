@@ -20,13 +20,26 @@
         android:textStyle="bold"
         tools:ignore="MissingConstraints"></EditText>
 
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        app:layout_constraintTop_toBottomOf="@id/sh"
+        android:background="#78039c"
+        android:spinnerMode="dropdown"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        tools:ignore="MissingConstraints" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv"
         android:layout_width="409dp"
-        android:layout_height="679dp"
+        android:layout_height="627dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/sh"
+        app:layout_constraintTop_toBottomOf="@id/spinner"
         tools:layout_editor_absoluteY="1dp"
         tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>

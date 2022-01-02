@@ -1,10 +1,16 @@
 package com.code.fundraisingapplication;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -13,18 +19,33 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.BitmapImageViewTarget;
+import com.bumptech.glide.request.target.CustomTarget;
+import com.bumptech.glide.request.target.Target;
+import com.bumptech.glide.request.transition.Transition;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageMetadata;
+import com.google.firebase.storage.StorageReference;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Locale;
+import java.util.concurrent.ExecutionException;
 
 public class RecyclerViewList extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private static final String TAG = "XA1212";
@@ -80,17 +101,41 @@ public class RecyclerViewList extends AppCompatActivity implements AdapterView.O
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
+                                String getImage=(String) document.getData().get("Image");
                                 String getTitle= (String) document.getData().get("Title");
                                 String getCategory=(String) document.getData().get("Category");
                                 String getDescription=(String)document.getData().get("Description");
                                 String getTargetAmount=(String)document.getData().get("TargetAmount");
                                 String getStatus=(String)document.getData().get("Status");
-                                ls.add(new ImageClass(getResources().getDrawable(R.drawable.goal),getTitle,getDescription,getTargetAmount,getCategory,getStatus));
-                                RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(RecyclerViewList.this, 1);
-                                rv.setLayoutManager(mLayoutManager);
-                                adapter = new RecyclerViewAdapter(ls,RecyclerViewList.this);
-                                rv.setAdapter(adapter);
-                                adapter.notifyDataSetChanged();
+
+                                StorageReference filePath = FirebaseStorage.getInstance().getReference().child(getImage);
+                                filePath.getMetadata().addOnSuccessListener(new OnSuccessListener<StorageMetadata>() {
+                                    @Override
+                                    public void onSuccess(StorageMetadata storageMetadata) {
+                                        // Metadata now contains the metadata for 'images/forest.jpg'
+
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception exception) {
+                                        // Uh-oh, an error occurred!
+                                    }
+                                });
+
+
+                                            ls.add(new ImageClass(null,getTitle,getDescription,getTargetAmount,getCategory,getStatus));
+                                            RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(RecyclerViewList.this, 2);
+                                            rv.setLayoutManager(mLayoutManager);
+                                            adapter = new RecyclerViewAdapter(ls,RecyclerViewList.this);
+                                            rv.setAdapter(adapter);
+                                            adapter.notifyDataSetChanged();
+
+
+
+
+
+
+
                             }
                         } else {
                             Log.w(TAG, "Error getting documents.", task.getException());

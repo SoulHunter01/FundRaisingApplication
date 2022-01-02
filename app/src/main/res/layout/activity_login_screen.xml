@@ -3,106 +3,132 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/background"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".ForgotPassword">
 
-
     <ImageView
+        android:id="@+id/imageview_logo"
 
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:src="@drawable/logo"></ImageView>
+        android:src="@drawable/logo"
+        tools:layout_editor_absoluteX="193dp"></ImageView>
 
     <TextView
-        android:layout_width="286dp"
+        android:id="@+id/textView"
+        android:layout_width="229dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="14dp"
-        android:layout_marginTop="125dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="124dp"
+        android:layout_marginEnd="140dp"
         android:fontFamily="sans-serif-black"
-        android:text="Already Have An Account?"
-        android:textAlignment="textStart"
+        android:text="Welcome Back!"
+        android:textAlignment="center"
         android:textAllCaps="true"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="40dp"
-        android:textStyle="bold"></TextView>
-
-    <EditText
-        android:id="@+id/username"
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="300dp"
-        android:hint="Enter UserName...."
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
-        android:textSize="15dp"
-        android:textStyle="bold"></EditText>
-
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="7dp"
+        tools:layout_editor_absoluteY="53dp"></TextView>
 
     <EditText
         android:id="@+id/password"
         android:layout_width="350dp"
         android:layout_height="50dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="370dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="314dp"
+        android:background="@drawable/rounded_bars"
         android:hint="Enter Password...."
-        android:inputType="textPassword"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
+        android:paddingStart="20dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
         android:textSize="15dp"
-        android:textStyle="bold"></EditText>
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="21dp"
+        tools:layout_editor_absoluteY="238dp"></EditText>
+
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="239dp"
+        android:background="@drawable/rounded_bars"
+        android:hint="Enter Username...."
+        android:inputType="textPassword"
+        android:paddingStart="20dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="21dp"
+        tools:layout_editor_absoluteY="168dp"></EditText>
 
     <TextView
         android:id="@+id/forgotpassword"
-        android:layout_width="70dp"
+        android:layout_width="200dp"
         android:layout_height="30dp"
-        android:layout_marginLeft="300dp"
-        android:layout_marginTop="380dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="172dp"
+        android:layout_marginTop="371dp"
         android:clickable="true"
-        android:text="Forgot?"
+        android:text="Forgot Password?"
         android:textAlignment="center"
-        android:textColor="#78039c"
-        android:textStyle="bold"></TextView>
+        android:textColor="#540261"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="87dp"
+        tools:layout_editor_absoluteY="310dp"></TextView>
 
-
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/loginbutton"
         android:layout_width="350dp"
         android:layout_height="50dp"
-        android:layout_marginLeft="30dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="430dp"
-        android:backgroundTint="#78039c"
+        android:background="@drawable/rounded_bars"
         android:text="Login"
-        android:textColor="#ffffff"></Button>
+        android:textColor="@color/white"
+        android:textSize="15dp"></androidx.appcompat.widget.AppCompatButton>
 
     <TextView
-        android:id="@+id/registrationintent"
-        android:layout_width="250dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="500dp"
-        android:paddingTop="10dp"
-        android:text="New User? Register Now..."
+        android:id="@+id/textView2"
+        android:layout_width="393dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="560dp"
+        android:text="Dont Have An Account?"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
         android:textSize="20dp"
         android:textStyle="bold"></TextView>
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/registrationintent"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="614dp"
+        android:layout_marginLeft="20dp"
+        android:background="@drawable/rounded_bars"
+        android:text="Register Now..."
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        android:textStyle="bold"></androidx.appcompat.widget.AppCompatButton>
 
     <FrameLayout
         android:id="@+id/FrameLayout1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_width="393dp"
+        android:layout_height="wrap_content">
 
 
     </FrameLayout>
-
-
 
 
 </RelativeLayout>

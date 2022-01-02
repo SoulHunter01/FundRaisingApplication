@@ -9,8 +9,12 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.RotateAnimation;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +27,8 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class LoginScreen extends AppCompatActivity {
 
+
+
     private static final String TAG = null;
     FirebaseAuth mAuth;
     EditText username;
@@ -30,12 +36,12 @@ public class LoginScreen extends AppCompatActivity {
     Button loginbutton;
     TextView registrationintent;
     TextView forgotpassword;
+    ImageView logoimageview;
     Button fb;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_screen);
-
         forgotpassword=findViewById(R.id.forgotpassword);
         mAuth = FirebaseAuth.getInstance();
         username=findViewById(R.id.username);

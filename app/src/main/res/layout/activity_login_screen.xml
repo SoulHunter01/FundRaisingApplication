@@ -8,6 +8,15 @@
     tools:context=".ForgotPassword">
 
     <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="-97dp"
+        android:layout_marginTop="-86dp"
+        android:src="@drawable/circle"></ImageView>
+
+    <ImageView
         android:id="@+id/imageview_logo"
 
         android:layout_width="150dp"
@@ -23,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="124dp"
+        android:layout_marginTop="150dp"
         android:layout_marginEnd="140dp"
         android:fontFamily="sans-serif-black"
         android:text="Welcome Back!"
@@ -38,13 +47,14 @@
     <EditText
         android:id="@+id/password"
         android:layout_width="350dp"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="314dp"
+        android:layout_marginTop="370dp"
         android:background="@drawable/rounded_bars"
         android:hint="Enter Password...."
         android:paddingStart="20dp"
+        android:inputType="textPassword"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         android:textSize="15dp"
@@ -55,13 +65,13 @@
     <EditText
         android:id="@+id/username"
         android:layout_width="350dp"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="239dp"
+        android:layout_marginTop="300dp"
         android:background="@drawable/rounded_bars"
         android:hint="Enter Username...."
-        android:inputType="textPassword"
+        android:inputType="text"
         android:paddingStart="20dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
@@ -77,21 +87,21 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="172dp"
-        android:layout_marginTop="371dp"
+        android:layout_marginTop="435dp"
         android:clickable="true"
         android:text="Forgot Password?"
         android:textAlignment="center"
-        android:textColor="#540261"
+        android:textColor="#78039c"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="87dp"
         tools:layout_editor_absoluteY="310dp"></TextView>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/loginbutton"
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="430dp"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="75dp"
+        android:layout_marginTop="470dp"
         android:background="@drawable/rounded_bars"
         android:text="Login"
         android:textColor="@color/white"
@@ -112,9 +122,9 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/registrationintent"
         android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="614dp"
+        android:layout_height="40dp"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="614dp"
         android:background="@drawable/rounded_bars"
         android:text="Register Now..."
         android:textAlignment="center"

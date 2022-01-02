@@ -27,7 +27,17 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class LoginScreen extends AppCompatActivity {
 
+    private void animatelogo(){
 
+        RotateAnimation rotate = new RotateAnimation(0, 360, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+        rotate.setDuration(10000);
+        rotate.setRepeatCount(Animation.INFINITE);
+        rotate.setInterpolator(new LinearInterpolator());
+        ImageView image= (ImageView) findViewById(R.id.imageview_logo);
+        image.startAnimation(rotate);
+
+
+    }
 
     private static final String TAG = null;
     FirebaseAuth mAuth;
@@ -43,6 +53,7 @@ public class LoginScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_screen);
         forgotpassword=findViewById(R.id.forgotpassword);
+        animatelogo();
         mAuth = FirebaseAuth.getInstance();
         username=findViewById(R.id.username);
         password=findViewById(R.id.password);

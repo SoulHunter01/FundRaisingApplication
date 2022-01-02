@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@color/black"
     tools:context=".MainActivity">
 
 
@@ -13,26 +13,29 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="14dp"
-        android:layout_marginTop="35dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="96dp"
         android:fontFamily="sans-serif-black"
         android:text="Lets Get You Registered..."
         android:textAlignment="textStart"
         android:textAllCaps="true"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="40dp"
         android:textStyle="bold"></TextView>
 
     <EditText
         android:id="@+id/getfirstname"
         android:layout_width="350dp"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="200dp"
+        android:background="@drawable/rounded_bars"
         android:hint="Enter Firstname...."
         android:inputType="text"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
+        android:paddingStart="20dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
         android:textSize="14dp"
         android:textStyle="bold"></EditText>
 
@@ -40,13 +43,16 @@
     <EditText
         android:id="@+id/getlastname"
         android:layout_width="350dp"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="280dp"
+        android:background="@drawable/rounded_bars"
         android:hint="Enter Lastname...."
         android:inputType="text"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
+        android:paddingStart="20dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+
         android:textSize="14dp"
         android:textStyle="bold"></EditText>
 
@@ -54,43 +60,55 @@
     <EditText
         android:id="@+id/getemail"
         android:layout_width="350dp"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="360dp"
+        android:background="@drawable/rounded_bars"
         android:hint="Enter Email...."
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
-        android:textSize="14dp"
         android:inputType="text"
+        android:paddingStart="20dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+
+        android:textSize="14dp"
         android:textStyle="bold"></EditText>
 
     <EditText
         android:id="@+id/getpassword"
         android:layout_width="350dp"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="440dp"
+        android:background="@drawable/rounded_bars"
         android:hint="Enter Password...."
         android:inputType="textPassword"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
+        android:paddingStart="20dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+
         android:textSize="14dp"
         android:textStyle="bold"></EditText>
 
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/getregistrationbutton"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="80dp"
         android:layout_marginTop="520dp"
-        android:backgroundTint="#78039c"
+        android:background="@drawable/rounded_bars"
         android:text="Register With Us"
         android:textColor="@color/white"
         android:textStyle="bold" />
 
-
-
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="-97dp"
+        android:layout_marginTop="-86dp"
+        android:src="@drawable/circle"></ImageView>
 
 
 </RelativeLayout>

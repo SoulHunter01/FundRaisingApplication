@@ -45,9 +45,7 @@ public class MainScreen_Tabs extends AppCompatActivity {
         AdRequest adRequest1 = new AdRequest.Builder().build();
         mAdView1.loadAd(adRequest1);
 
-        mAdView2 = findViewById(R.id.ad2);
-        AdRequest adRequest2 = new AdRequest.Builder().build();
-        mAdView2.loadAd(adRequest2);
+
 
         creategoalbutton.setOnClickListener(new View.OnClickListener() {
             @Override

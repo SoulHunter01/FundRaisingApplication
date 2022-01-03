@@ -5,7 +5,7 @@
     android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:background="@drawable/background_chat"
     tools:context=".PaymentScreen">
 
 
@@ -45,11 +45,11 @@
         android:layout_height="50dp"
         android:layout_marginLeft="220dp"
         android:layout_marginTop="50dp"
-        android:textColor="@color/white"
-        android:textSize="15dp"
-        android:textStyle="bold"
+        android:text="Stay Anonymous..."
         android:textAllCaps="true"
-        android:text="Stay Anonymous..."></TextView>
+        android:textColor="#1F1C39"
+        android:textSize="15dp"
+        android:textStyle="bold"></TextView>
 
     <TextView
         android:id="@+id/title_of_goal"
@@ -60,7 +60,7 @@
         android:background="@drawable/rounded"
         android:textAlignment="center"
         android:textAllCaps="true"
-        android:textColor="@color/white"
+        android:textColor="#1F1C39"
         android:textSize="20dp"
         android:textStyle="bold" />
 
@@ -73,7 +73,7 @@
         android:layout_marginTop="300dp"
         android:background="@drawable/rounded"
         android:textAlignment="center"
-        android:textColor="@color/white"
+        android:textColor="#1F1C39"
         android:textSize="30dp"
         android:textStyle="bold"
         tools:ignore="MissingConstraints" />
@@ -89,8 +89,8 @@
         android:paddingStart="20dp"
         android:textAlignment="center"
         android:textAllCaps="true"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
+        android:textColor="#1F1C39"
+        android:textColorHint="#1F1C39"
         android:textSize="20dp"
         android:textStyle="bold"
         tools:ignore="MissingConstraints" />
@@ -104,7 +104,7 @@
         android:layout_marginTop="500dp"
         android:background="@drawable/rounded_bars"
         android:text="Pay Now"
-        android:textColor="@color/white"
+        android:textColor="#1F1C39"
 
         ></androidx.appcompat.widget.AppCompatButton>
 

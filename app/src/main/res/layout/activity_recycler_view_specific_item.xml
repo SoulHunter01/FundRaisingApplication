@@ -5,7 +5,7 @@
     android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:background="@drawable/background_chat"
     tools:context=".RecyclerViewSpecificItem">
 
 
@@ -27,7 +27,7 @@
         android:text="QR Code Generator"
         android:textAlignment="center"
         android:textAllCaps="true"
-        android:textColor="@color/white"
+        android:textColor="#1F1C39"
         android:textSize="15dp"
         android:textStyle="bold" />
 
@@ -41,7 +41,7 @@
         android:text="Change Goal Status"
         android:textAlignment="center"
         android:textAllCaps="true"
-        android:textColor="@color/white"
+        android:textColor="#1F1C39"
         android:textSize="15dp"
         android:textStyle="bold"
 
@@ -81,7 +81,7 @@
         android:background="@drawable/rounded"
         android:textAlignment="center"
         android:textAllCaps="true"
-        android:textColor="@color/white"
+        android:textColor="#1F1C39"
         android:textSize="20dp"
         android:textStyle="bold"></TextView>
 
@@ -93,7 +93,7 @@
         android:layout_marginTop="480dp"
         android:background="@drawable/rounded"
         android:textAlignment="center"
-        android:textColor="@color/white"
+        android:textColor="#1F1C39"
         android:textSize="20dp"
         android:textStyle="bold"
         tools:ignore="MissingConstraints" />
@@ -106,7 +106,7 @@
         android:layout_marginTop="480dp"
         android:background="@drawable/rounded"
         android:textAlignment="center"
-        android:textColor="@color/white"
+        android:textColor="#1F1C39"
         android:textSize="20dp"
         android:textStyle="bold"
         tools:ignore="MissingConstraints"></TextView>
@@ -120,8 +120,8 @@
         android:layout_marginTop="570dp"
         android:background="@drawable/rounded"
         android:text="Support Cause"
-
-        android:textColor="@color/white"></androidx.appcompat.widget.AppCompatButton>
+        android:textStyle="bold"
+        android:textColor="#1F1C39"></androidx.appcompat.widget.AppCompatButton>
 
 
 </RelativeLayout>

@@ -12,6 +12,7 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -221,6 +222,8 @@ public class RecyclerViewSpecificItem extends AppCompatActivity {
                                 if (getTitle.equals(title_of_goal.getText().toString())) {
                                     String targetAmount = (String) document.getData().get("TargetAmount");
                                     targetamount_of_goal.setText(targetAmount);
+                                    targetamount_of_goal.setTextColor(Color.WHITE);
+
 
                                     Intent newintent=new Intent(getApplicationContext(),RecyclerViewSpecificItem.class);
                                     PendingIntent pendingIntent=PendingIntent.getActivity(getApplicationContext(),0,newintent,PendingIntent.FLAG_UPDATE_CURRENT);

@@ -147,7 +147,7 @@ public class PaymentScreen extends AppCompatActivity {
                             }
                         });
 
-                Intent intent=new Intent(PaymentScreen.this,RecyclerViewSpecificItem.class);
+                Intent intent=new Intent(PaymentScreen.this,Payment_Activity.class);
                 startActivity(intent);
             }
         });

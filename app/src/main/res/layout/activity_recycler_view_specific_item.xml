@@ -88,9 +88,9 @@
     <TextView
         android:id="@+id/category_of_goal"
         android:layout_width="150dp"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="500dp"
+        android:layout_marginTop="480dp"
         android:background="@drawable/rounded"
         android:textAlignment="center"
         android:textColor="@color/white"
@@ -101,9 +101,9 @@
     <TextView
         android:id="@+id/targetamount_of_goal"
         android:layout_width="150dp"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:layout_marginLeft="230dp"
-        android:layout_marginTop="500dp"
+        android:layout_marginTop="480dp"
         android:background="@drawable/rounded"
         android:textAlignment="center"
         android:textColor="@color/white"

@@ -54,7 +54,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         Upload uploadCurrent=ls.get(position);
         Picasso.with(c).load(uploadCurrent.getmImageUrl()).centerCrop().fit().into(holder.image_to_show);
         holder.Goal_title.setText(ls.get(position).getmName());
-        holder.Goal_targetamount.setText(ls.get(position).getmTargetAmount());
+        holder.Goal_targetamount.setText(ls.get(position).getmTargetAmount()+" Rs.");
         holder.Goal_category.setText(ls.get(position).getmCategory());
         holder.Goal_status.setText(ls.get(position).getmStatus());
         holder.Goal_city.setText(ls.get(position).getmCity());

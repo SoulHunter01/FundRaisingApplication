@@ -21,6 +21,7 @@ public class MainScreen_Tabs extends AppCompatActivity {
     Button btn_scan;
     Button logout;
     Button show_ad;
+    Button seecontributions;
     private AdView mAdView1;
     private AdView mAdView2;
     @Override
@@ -31,6 +32,7 @@ public class MainScreen_Tabs extends AppCompatActivity {
         ChangeActiveStatus=findViewById(R.id.ChangeActiveStatus);
         btn_scan = (Button) findViewById(R.id.btn_scan);
         logout=(Button) findViewById(R.id.logout);
+        seecontributions=findViewById(R.id.seecontributions);
 
         AdView adView = new AdView(this);
 
@@ -83,6 +85,13 @@ public class MainScreen_Tabs extends AppCompatActivity {
             }
         });
 
+        seecontributions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MainScreen_Tabs.this,RecyclerViewContributionList.class);
+                startActivity(intent);
+            }
+        });
 
 
     }

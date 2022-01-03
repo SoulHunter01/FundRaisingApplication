@@ -11,8 +11,10 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/logout"
-        android:layout_width="250dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="71dp"
+        android:layout_marginEnd="71dp"
         android:layout_marginBottom="45dp"
         android:backgroundTint="#78039c"
         android:text="Logout"
@@ -62,21 +64,39 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="19dp"
         android:layout_marginEnd="19dp"
-        android:layout_marginBottom="226dp"
+        android:layout_marginBottom="47dp"
         android:background="@drawable/rounded"
         android:backgroundTint="#78039c"
         android:text="Scan QR"
         android:textColor="#ffffff"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/seecontributions"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ChangeActiveStatus" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/seecontributions"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="19dp"
+        android:layout_marginEnd="19dp"
+        android:layout_marginBottom="131dp"
+        android:background="@drawable/rounded"
+        android:backgroundTint="#78039c"
+        android:text="See Contributions"
+        android:textColor="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_scan" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="200dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="41dp"
         android:src="@drawable/logo"
         app:layout_constraintBottom_toTopOf="@+id/creategoalbutton"
         app:layout_constraintEnd_toEndOf="parent"

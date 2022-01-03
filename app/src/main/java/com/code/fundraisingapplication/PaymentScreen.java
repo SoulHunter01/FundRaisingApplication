@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -13,10 +14,11 @@ import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -27,7 +29,10 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class PaymentScreen extends AppCompatActivity {
@@ -37,6 +42,7 @@ public class PaymentScreen extends AppCompatActivity {
     TextView target_of_goal;
     EditText YourContribution;
     Button paynow;
+    Switch aSwitch;
 
     private void animatelogo(){
 
@@ -65,14 +71,22 @@ public class PaymentScreen extends AppCompatActivity {
         target_of_goal.setText(target);
         YourContribution=findViewById(R.id.YourContribution);
         paynow=findViewById(R.id.paynow);
+        aSwitch=findViewById(R.id.switch_value);
+
+
+
 
 
         paynow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+
+
+
                 SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(PaymentScreen.this);
                 String username = preferences.getString("Username", "");
+
 
                 FirebaseFirestore db = FirebaseFirestore.getInstance();
                 db.collection("GoalInformation")
@@ -119,13 +133,9 @@ public class PaymentScreen extends AppCompatActivity {
 
 
 
-                                            /*Intent intent1=new Intent(PaymentScreen.this,RecyclerViewSpecificItem.class);
+                                            Intent intent1=new Intent(PaymentScreen.this,RecyclerViewSpecificItem.class);
                                             setResult(RESULT_OK,intent1);
-                                            finish();*/
-                                            Intent intent=new Intent(PaymentScreen.this,Payment_Activity.class);
-                                            intent.putExtra("price", YourContribution.getText().toString());
-
-                                            startActivityForResult(intent,0);
+                                            finish();
 
                                         }
 
@@ -136,32 +146,14 @@ public class PaymentScreen extends AppCompatActivity {
                                 }
                             }
                         });
+
+                Intent intent=new Intent(PaymentScreen.this,RecyclerViewSpecificItem.class);
+                startActivity(intent);
             }
         });
 
 
 
 
-
-
-    }
-
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        // Check that it is the SecondActivity with an OK result
-        if (requestCode == 0 && resultCode == RESULT_OK) {
-            // Get String data from Intent
-            String ResponseCode = data.getStringExtra("pp_ResponseCode");
-            System.out.println("FundRaising: ResponseCode:" + ResponseCode);
-            if(ResponseCode.equals("000")) {
-                Toast.makeText(getApplicationContext(), "Payment Success", Toast.LENGTH_SHORT).show();
-            }
-            else
-            {
-                Toast.makeText(getApplicationContext(), "Payment Failed", Toast.LENGTH_SHORT).show();
-            }
-            finish();
-        }
     }
 }

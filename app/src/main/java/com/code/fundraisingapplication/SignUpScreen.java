@@ -72,20 +72,25 @@ public class SignUpScreen extends AppCompatActivity {
                             }
                         });
 
-                mAuth.createUserWithEmailAndPassword(email.getText().toString(),password.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        Toast.makeText(SignUpScreen.this,"New User Created...",Toast.LENGTH_LONG).show();
-                        Intent intent=new Intent(SignUpScreen.this,LoginScreen.class);
-                        startActivity(intent);
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(SignUpScreen.this,"System Error",Toast.LENGTH_LONG).show();
-                    }
-                });
-
+                if(!email.getText().toString().equals("") || !password.getText().toString().equals("")) {
+                    mAuth.createUserWithEmailAndPassword(email.getText().toString(), password.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            Toast.makeText(SignUpScreen.this, "New User Created...", Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(SignUpScreen.this, LoginScreen.class);
+                            startActivity(intent);
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(SignUpScreen.this, "System Error", Toast.LENGTH_LONG).show();
+                        }
+                    });
+                }
+                else{
+                    email.setError("Enter Email");
+                    password.setError("Enter Password");
+                }
 
             }
         });

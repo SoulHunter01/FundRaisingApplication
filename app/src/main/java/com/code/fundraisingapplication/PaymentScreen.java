@@ -78,93 +78,97 @@ public class PaymentScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment_screen2);
-        Intent intent=getIntent();
+        Intent intent = getIntent();
         animatelogo();
-        String title=intent.getStringExtra("Title");
-        String target=intent.getStringExtra("Target");
-        title_of_goal=findViewById(R.id.title_of_goal);
+        String title = intent.getStringExtra("Title");
+        String target = intent.getStringExtra("Target");
+        title_of_goal = findViewById(R.id.title_of_goal);
         title_of_goal.setText(title);
-        target_of_goal=findViewById(R.id.targetamount_of_goal);
+        target_of_goal = findViewById(R.id.targetamount_of_goal);
         target_of_goal.setText(target);
-        YourContribution=findViewById(R.id.YourContribution);
-        paynow=findViewById(R.id.paynow);
-        aSwitch=findViewById(R.id.switch_value);
+        YourContribution = findViewById(R.id.YourContribution);
+        paynow = findViewById(R.id.paynow);
+        aSwitch = findViewById(R.id.switch_value);
 
 
 
+            paynow.setOnClickListener(new View.OnClickListener() {
+                                          @Override
+                                          public void onClick(View v) {
 
-        paynow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+                                              if (!YourContribution.getText().toString().equals("")) {
 
-                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(PaymentScreen.this);
-                String username = preferences.getString("Username", "");
-
-
-                FirebaseFirestore db = FirebaseFirestore.getInstance();
-                db.collection("GoalInformation")
-                        .get()
-                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                            @Override
-                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                if (task.isSuccessful()) {
-                                    for (QueryDocumentSnapshot document : task.getResult()) {
-                                        String getTitle= (String) document.getData().get("Title");
-
-                                        if(getTitle.equals(title) ) {
-                                            int target_int = Integer.parseInt(target_of_goal.getText().toString());
-                                            int contribution = Integer.parseInt(YourContribution.getText().toString());
-                                            int amount = target_int - contribution;
-
-                                            db.collection("GoalInformation").document(document.getId())
-                                                    .update("TargetAmount", String.valueOf(amount));
+                                                  SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(PaymentScreen.this);
+                                                  String username = preferences.getString("Username", "");
 
 
+                                                  FirebaseFirestore db = FirebaseFirestore.getInstance();
+                                                  db.collection("GoalInformation")
+                                                          .get()
+                                                          .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                                              @Override
+                                                              public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                                                  if (task.isSuccessful()) {
+                                                                      for (QueryDocumentSnapshot document : task.getResult()) {
+                                                                          String getTitle = (String) document.getData().get("Title");
+
+                                                                          if (getTitle.equals(title)) {
+                                                                              int target_int = Integer.parseInt(target_of_goal.getText().toString());
+                                                                              int contribution = Integer.parseInt(YourContribution.getText().toString());
+                                                                              int amount = target_int - contribution;
+
+                                                                              db.collection("GoalInformation").document(document.getId())
+                                                                                      .update("TargetAmount", String.valueOf(amount));
 
 
-
-
-                                            FirebaseFirestore db = FirebaseFirestore.getInstance();
-                                            // Create a new user with a first and last name
-                                            Map<String, Object> user = new HashMap<>();
-                                            user.put("Title", title_of_goal.getText().toString());
-                                            user.put("Contribution", YourContribution.getText().toString());
-                                            user.put("Username", username);
+                                                                              FirebaseFirestore db = FirebaseFirestore.getInstance();
+                                                                              // Create a new user with a first and last name
+                                                                              Map<String, Object> user = new HashMap<>();
+                                                                              user.put("Title", title_of_goal.getText().toString());
+                                                                              user.put("Contribution", YourContribution.getText().toString());
+                                                                              user.put("Username", username);
 
 
 // Add a new document with a generated ID
-                                            db.collection("UserContribution")
-                                                    .add(user)
-                                                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                                                        @Override
-                                                        public void onSuccess(DocumentReference documentReference) {
-                                                            Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-                                                        }
-                                                    })
-                                                    .addOnFailureListener(new OnFailureListener() {
-                                                        @Override
-                                                        public void onFailure(@NonNull Exception e) {
-                                                            Log.w(TAG, "Error adding document", e);
-                                                        }
-                                                    });
-                                        }
+                                                                              db.collection("UserContribution")
+                                                                                      .add(user)
+                                                                                      .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                                                                          @Override
+                                                                                          public void onSuccess(DocumentReference documentReference) {
+                                                                                              Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+                                                                                          }
+                                                                                      })
+                                                                                      .addOnFailureListener(new OnFailureListener() {
+                                                                                          @Override
+                                                                                          public void onFailure(@NonNull Exception e) {
+                                                                                              Log.w(TAG, "Error adding document", e);
+                                                                                          }
+                                                                                      });
+                                                                          }
 
 
-                                    }
-                                } else {
-                                    Log.w("TAGXAXAXAXA", "Error getting documents.", task.getException());
-                                }
-                            }
-                        });
+                                                                      }
+                                                                  } else {
+                                                                      Log.w("TAGXAXAXAXA", "Error getting documents.", task.getException());
+                                                                  }
+                                                              }
+                                                          });
 
-                Intent intent = new Intent(PaymentScreen.this, Payment_Activity.class);
-                intent.putExtra("price", YourContribution.getText().toString());
+                                                  Intent intent = new Intent(PaymentScreen.this, Payment_Activity.class);
+                                                  intent.putExtra("price", YourContribution.getText().toString());
 
-                startActivityForResult(intent, 0);
-            }
+                                                  startActivityForResult(intent, 0);
+                                              }
 
-        });
-    }
+                                              else{
+
+                                                  YourContribution.setError("Enter Amount Please...");
+                                              }
+                                          }
+
+            });
+        }
+
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 

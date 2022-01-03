@@ -35,15 +35,10 @@ public class Upload {
         this.mTargetAmount = mTargetAmount;
     }
 
-    public String getmCity() { return mCity; }
-
-    public void setmCity(String mCity) { this.mCity = mCity; }
-
     private String mName;
     private String mImageUrl;
     private String mDescription;
     private String mTargetAmount;
-    private String mCity;
 
     public String getmCategory() {
         return mCategory;
@@ -61,8 +56,13 @@ public class Upload {
         this.mStatus = mStatus;
     }
 
+    public String getmCity() { return mCity; }
+
+    public void setmCity(String mCity) { this.mCity = mCity; }
+
     private String mCategory;
     private String mStatus;
+    private String mCity;
 
     public Upload(){
         //empty

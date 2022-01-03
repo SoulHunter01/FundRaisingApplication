@@ -31,16 +31,15 @@ public class RecyclerViewList extends AppCompatActivity implements AdapterView.O
     ArrayList<Upload> ls;
     EditText sh;
     Spinner spinner;
-    public static String[] paths = {"All","Education","Climate Change","Medical Support"};
+    Spinner spinner2;
+    public static String[] paths = {"Categories","Education","Climate Change","Medical Support"};
+    public static String[] cities = {"City", "Lahore", "Islamabad", "Rawalpindi", "Multan", "Faisalabad", "Karachi", "Hyderabad", "New York", "Washington DC", "Florida", "London"};
 
     public static String goalname;
     RecyclerViewAdapter adapter;
     RecyclerViewAdapter adapter1;
+    RecyclerViewAdapter adapter2;
     private DatabaseReference mDatabaseRef;
-
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +48,7 @@ public class RecyclerViewList extends AppCompatActivity implements AdapterView.O
         rv=findViewById(R.id.rv);
         ls=new ArrayList<>();
         spinner = (Spinner)findViewById(R.id.spinner);
+        spinner2 = (Spinner)findViewById(R.id.spinner2);
         sh = (EditText) findViewById(R.id.sh);
         sh.setText(goalname);
 
@@ -70,13 +70,10 @@ public class RecyclerViewList extends AppCompatActivity implements AdapterView.O
         });
 
         spinner.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, paths));
+        spinner.setOnItemSelectedListener(this);
 
-
-
-        spinner.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
-
-
-
+        spinner2.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, cities));
+        spinner2.setOnItemSelectedListener(this);
 
         mDatabaseRef= FirebaseDatabase.getInstance().getReference("uploads");
         mDatabaseRef.addValueEventListener(new ValueEventListener() {
@@ -99,14 +96,6 @@ public class RecyclerViewList extends AppCompatActivity implements AdapterView.O
                 Toast.makeText(RecyclerViewList.this,error.getMessage(),Toast.LENGTH_LONG).show();
             }
         });
-
-
-
-
-
-
-
-
 
     }
 
@@ -150,6 +139,21 @@ public class RecyclerViewList extends AppCompatActivity implements AdapterView.O
         adapter1.notifyDataSetChanged();
     }
 
+    private void filter4(String text) {
+        ArrayList<Upload> filteredList = new ArrayList<>();
+
+        for (Upload item : ls) {
+            if (item.getmCity().toLowerCase().contains(text.toLowerCase())) {
+                filteredList.add(item);
+            }
+        }
+
+        adapter2 = new RecyclerViewAdapter(ls,RecyclerViewList.this);
+        rv.setAdapter(adapter2);
+        adapter2.filterList(filteredList);
+        adapter2.notifyDataSetChanged();
+    }
+
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
        // Toast.makeText(RecyclerViewList.this,paths[i],Toast.LENGTH_LONG).show();
@@ -160,10 +164,26 @@ public class RecyclerViewList extends AppCompatActivity implements AdapterView.O
 //                } else if (i == 3) {
 //                    filter2("Medical Support");
 //                }
-        if (paths[i] != "All") {
-            filter2(paths[i]);
-        } else {
-            filter3(paths[i]);
+
+        Spinner spinner = (Spinner)adapterView;
+        Spinner spinner1 = (Spinner)adapterView;
+
+        if (spinner.getId() == R.id.spinner) {
+            Toast.makeText(this, paths[i], Toast.LENGTH_LONG).show();
+            if (paths[i] != "Categories") {
+                filter2(paths[i]);
+            } else {
+                filter3(paths[i]);
+            }
+        }
+        if (spinner1.getId() == R.id.spinner2) {
+            Toast.makeText(this, cities[i], Toast.LENGTH_LONG).show();
+            if (cities[i] != "City") {
+                filter4(cities[i]);
+            } else {
+                filter3(cities[i]);
+            }
+            //filter4(cities[i]);
         }
     }
 
@@ -171,4 +191,5 @@ public class RecyclerViewList extends AppCompatActivity implements AdapterView.O
     public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
+
 }

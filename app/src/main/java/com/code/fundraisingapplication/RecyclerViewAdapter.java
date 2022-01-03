@@ -76,6 +76,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     intent.putExtra("Category",get_category_from_recyler[0]);
                     intent.putExtra("TargetAmount",get_target_amount_from_recycler[0]);
                     intent.putExtra("Status",get_status_from_recycler[0]);
+                    intent.putExtra("City", get_city_from_recycler[0]);
 
                     v.getContext().startActivity(intent);
                 }

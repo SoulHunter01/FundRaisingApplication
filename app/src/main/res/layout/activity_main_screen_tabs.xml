@@ -9,7 +9,7 @@
     tools:context=".CreateGoal">
 
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/creategoalbutton"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
@@ -18,28 +18,30 @@
         android:backgroundTint="#78039c"
         android:text="Create Goal"
         android:textColor="#ffffff"
+        android:background="@drawable/rounded_bars"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></Button>
+        app:layout_constraintTop_toTopOf="parent"></androidx.appcompat.widget.AppCompatButton>
 
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/ChangeActiveStatus"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="6dp"
         android:layout_marginTop="184dp"
         android:backgroundTint="#78039c"
+        android:background="@drawable/rounded"
         android:text="See Goals"
         android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></Button>
+        app:layout_constraintTop_toTopOf="parent"></androidx.appcompat.widget.AppCompatButton>
 
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_scan"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
@@ -47,6 +49,7 @@
         android:layout_marginTop="350dp"
         android:backgroundTint="#78039c"
         android:text="Scan QR"
+        android:background="@drawable/rounded"
         android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

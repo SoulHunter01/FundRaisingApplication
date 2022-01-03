@@ -25,7 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="52dp"
         app:layout_constraintTop_toBottomOf="@id/sh"
-        android:background="@color/white"
+        android:background="#FFA500"
         android:spinnerMode="dropdown"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
@@ -36,7 +36,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv"
         android:layout_width="match_parent"
-        android:layout_height="627dp"
+        android:layout_height="750dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/spinner"

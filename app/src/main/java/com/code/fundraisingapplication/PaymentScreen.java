@@ -9,8 +9,12 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.RotateAnimation;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -33,11 +37,25 @@ public class PaymentScreen extends AppCompatActivity {
     EditText YourContribution;
     Button paynow;
 
+    private void animatelogo(){
+
+        RotateAnimation rotate = new RotateAnimation(0, 360, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+        rotate.setDuration(10000);
+        rotate.setRepeatCount(Animation.INFINITE);
+        rotate.setInterpolator(new LinearInterpolator());
+        ImageView image= (ImageView) findViewById(R.id.imageView);
+        image.startAnimation(rotate);
+
+
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment_screen2);
         Intent intent=getIntent();
+        animatelogo();
         String title=intent.getStringExtra("Title");
         String target=intent.getStringExtra("Target");
         title_of_goal=findViewById(R.id.title_of_goal);

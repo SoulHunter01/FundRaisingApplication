@@ -14,7 +14,6 @@ import android.widget.ImageView;
 public class MainActivity extends AppCompatActivity {
 
     private final int SPLASH_DELAY=2500;
-
     private ImageView imageView;
 
     @Override

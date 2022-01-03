@@ -1,6 +1,7 @@
 package com.code.fundraisingapplication;
 
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 
 public class ImageClass {
 

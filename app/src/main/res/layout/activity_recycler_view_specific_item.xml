@@ -5,8 +5,10 @@
     android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@color/black"
     tools:context=".RecyclerViewSpecificItem">
+
+
 
 
     <ImageView
@@ -17,26 +19,26 @@
         tools:layout_editor_absoluteX="106dp"
         tools:layout_editor_absoluteY="40dp" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/generate_QR"
-        android:layout_width="220dp"
-        android:layout_height="60dp"
+        android:layout_width="350dp"
+        android:layout_height="40dp"
         android:layout_marginLeft="180dp"
         android:layout_marginTop="50dp"
-        android:backgroundTint="@color/black"
+        android:background="@drawable/rounded_bars"
         android:text="QR Code Generator"
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textSize="15dp"
         android:textStyle="bold" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/changegoalstatus"
-        android:layout_width="220dp"
-        android:layout_height="60dp"
+        android:layout_width="350dp"
+        android:layout_height="40dp"
         android:layout_marginLeft="180dp"
         android:layout_marginTop="120dp"
-        android:backgroundTint="@color/black"
+        android:background="@drawable/rounded_bars"
         android:text="Change Goal Status"
         android:textAlignment="center"
         android:textAllCaps="true"
@@ -44,17 +46,18 @@
         android:textStyle="bold"
 
 
-        ></Button>
+        ></androidx.appcompat.widget.AppCompatButton>
 
     <TextView
         android:id="@+id/title_of_goal"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginLeft="0dp"
+        android:layout_marginLeft="50dp"
         android:layout_marginTop="180dp"
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textSize="40dp"
+        android:textColor="@color/white"
         android:textStyle="bold" />
 
     <TextView
@@ -64,6 +67,7 @@
         android:layout_marginLeft="50dp"
         android:layout_marginTop="240dp"
         android:textAlignment="center"
+        android:textColor="@color/white"
         android:textSize="20dp"
         android:textStyle="bold"
         tools:ignore="MissingConstraints" />
@@ -76,8 +80,8 @@
         android:layout_marginTop="400dp"
         android:textAlignment="center"
         android:textAllCaps="true"
-        android:textAppearance="@color/black"
-        android:textColor="@color/black"
+        android:textAppearance="@color/white"
+        android:textColor="@color/white"
         android:textSize="20dp"
         android:textStyle="bold"></TextView>
 
@@ -88,6 +92,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginTop="500dp"
         android:textAlignment="center"
+        android:textColor="@color/white"
         android:textSize="20dp"
         android:textStyle="bold"
         tools:ignore="MissingConstraints" />
@@ -99,21 +104,23 @@
         android:layout_marginLeft="230dp"
         android:layout_marginTop="500dp"
         android:textAlignment="center"
+        android:textColor="@color/white"
         android:textSize="20dp"
         android:textStyle="bold"
         tools:ignore="MissingConstraints"></TextView>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/applypayment"
         android:layout_width="300dp"
-        android:layout_height="60dp"
+        android:layout_height="40dp"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="50dp"
         android:layout_marginTop="570dp"
-        android:backgroundTint="@color/black"
-        android:text="Apply Payment Via Firebase"
+        android:background="@drawable/rounded_bars"
+        android:text="Apply Payment"
 
-        android:textColor="@color/white"></Button>
+
+        android:textColor="@color/white"></androidx.appcompat.widget.AppCompatButton>
 
 
 </RelativeLayout>

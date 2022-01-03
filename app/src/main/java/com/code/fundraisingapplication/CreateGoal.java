@@ -187,10 +187,10 @@ public class CreateGoal extends AppCompatActivity implements AdapterView.OnItemS
 
 
 
-                OneSignal.setLogLevel(OneSignal.LOG_LEVEL.VERBOSE, OneSignal.LOG_LEVEL.NONE);
+               // OneSignal.setLogLevel(OneSignal.LOG_LEVEL.VERBOSE, OneSignal.LOG_LEVEL.NONE);
                 // OneSignal Initialization
-                OneSignal.initWithContext(CreateGoal.this);
-                OneSignal.setAppId(ONESIGNAL_APP_ID);
+               // OneSignal.initWithContext(CreateGoal.this);
+               // OneSignal.setAppId(ONESIGNAL_APP_ID);
 
                 NotificationCompat.Builder builder = new NotificationCompat.Builder(CreateGoal.this, "Generating Goal")
                         .setSmallIcon(R.drawable.tick)

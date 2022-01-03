@@ -2,7 +2,11 @@ package com.code.fundraisingapplication;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.icu.util.Calendar;
@@ -25,6 +29,14 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -44,6 +56,10 @@ public class PaymentScreen extends AppCompatActivity {
     EditText YourContribution;
     Button paynow;
     Switch aSwitch;
+    DatabaseReference mDatabaseRef;
+
+    String CHANNEL_ID="Channel 1";
+
 
     private void animatelogo(){
 
@@ -77,7 +93,6 @@ public class PaymentScreen extends AppCompatActivity {
 
 
 
-
         paynow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -100,9 +115,13 @@ public class PaymentScreen extends AppCompatActivity {
                                             int target_int = Integer.parseInt(target_of_goal.getText().toString());
                                             int contribution = Integer.parseInt(YourContribution.getText().toString());
                                             int amount = target_int - contribution;
+
                                             db.collection("GoalInformation").document(document.getId())
                                                     .update("TargetAmount", String.valueOf(amount));
-                                            target_of_goal.setText(String.valueOf(amount));
+
+
+
+
 
 
                                             FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -155,9 +174,65 @@ public class PaymentScreen extends AppCompatActivity {
             String ResponseCode = data.getStringExtra("pp_ResponseCode");
             System.out.println("DateFn: ResponseCode:" + ResponseCode);
             if (ResponseCode.equals("000")) {
-                Toast.makeText(getApplicationContext(), "Payment Success", Toast.LENGTH_SHORT).show();
-            } else {
                 Toast.makeText(getApplicationContext(), "Payment Failed", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(getApplicationContext(), "Payment Success", Toast.LENGTH_SHORT).show();
+
+
+                DatabaseReference questionsRef = FirebaseDatabase.getInstance().getReference().child("uploads");
+                questionsRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot questionsSnapshot) {
+                        for (DataSnapshot questionSnapshot: questionsSnapshot.getChildren()) {
+                            DataSnapshot name_of_goal_in_database=questionSnapshot.child("mName");
+                            String value=name_of_goal_in_database.getValue().toString().toLowerCase(Locale.ROOT).trim();
+                            String title_get=title_of_goal.getText().toString().toLowerCase(Locale.ROOT).trim();
+
+                            if(value.equals(title_get)){
+
+                                DataSnapshot amount_of_goal_in_database=questionSnapshot.child("mTargetAmount");
+                                String amount=amount_of_goal_in_database.getValue().toString();
+                                String val1=target_of_goal.getText().toString();
+                                String val2=YourContribution.getText().toString();
+                                int val1_int=Integer.valueOf(val1);
+                                int val2_int=Integer.valueOf(val2);
+                                int newval=val1_int-val2_int;
+
+                                amount_of_goal_in_database.getRef().setValue(String.valueOf(newval));
+                                Toast.makeText(PaymentScreen.this,"Updated In Realtime From "+amount+" To "+String.valueOf(newval),Toast.LENGTH_LONG).show();
+
+                            }
+
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        throw databaseError.toException();
+                    }
+                });
+
+
+
+
+
+
+                Intent newintent=new Intent(getApplicationContext(),RecyclerViewSpecificItem.class);
+                PendingIntent pendingIntent=PendingIntent.getActivity(getApplicationContext(),0,newintent,PendingIntent.FLAG_UPDATE_CURRENT);
+
+                NotificationCompat.Builder builder=new NotificationCompat.Builder(getApplicationContext(),CHANNEL_ID)
+                        .setContentIntent(pendingIntent)
+                        .setContentTitle(title_of_goal.getText().toString())
+                        .setContentText("Target Of "+title_of_goal.getText().toString()+" Has Been Updated To "+target_of_goal.getText().toString())
+                        .setSmallIcon(R.drawable.notification_icon);
+
+                NotificationManager notificationManager= (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+                NotificationChannel notificationChannel=new NotificationChannel(CHANNEL_ID,"This Is My First Notification",NotificationManager.IMPORTANCE_HIGH);
+                notificationManager.createNotificationChannel(notificationChannel);
+                notificationManager.notify(0,builder.build());
+
+
+
             }
             finish();
         }

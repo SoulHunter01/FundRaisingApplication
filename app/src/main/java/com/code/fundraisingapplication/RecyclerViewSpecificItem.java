@@ -60,8 +60,6 @@ public class RecyclerViewSpecificItem extends AppCompatActivity {
     String category_get = null;
     String targetamount_get = null;
     String status_get = null;
-    String CHANNEL_ID="Channel 1";
-
 
     private void animatelogo(){
 
@@ -189,6 +187,9 @@ public class RecyclerViewSpecificItem extends AppCompatActivity {
                 } else {
                     Toast.makeText(RecyclerViewSpecificItem.this, "Goal Not Active", Toast.LENGTH_LONG).show();
                 }
+
+
+
             }
 
         });
@@ -224,20 +225,6 @@ public class RecyclerViewSpecificItem extends AppCompatActivity {
                                     targetamount_of_goal.setText(targetAmount);
                                     targetamount_of_goal.setTextColor(Color.WHITE);
 
-
-                                    Intent newintent=new Intent(getApplicationContext(),RecyclerViewSpecificItem.class);
-                                    PendingIntent pendingIntent=PendingIntent.getActivity(getApplicationContext(),0,newintent,PendingIntent.FLAG_UPDATE_CURRENT);
-
-                                    NotificationCompat.Builder builder=new NotificationCompat.Builder(getApplicationContext(),CHANNEL_ID)
-                                            .setContentIntent(pendingIntent)
-                                            .setContentTitle(title_of_goal.getText().toString())
-                                            .setContentText("Target Of "+title_of_goal.getText().toString()+" Has Been Updated To "+targetamount_of_goal.getText().toString())
-                                            .setSmallIcon(R.drawable.notification_icon);
-
-                                    NotificationManager notificationManager= (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-                                    NotificationChannel notificationChannel=new NotificationChannel(CHANNEL_ID,"This Is My First Notification",NotificationManager.IMPORTANCE_HIGH);
-                                    notificationManager.createNotificationChannel(notificationChannel);
-                                    notificationManager.notify(0,builder.build());
 
 
 

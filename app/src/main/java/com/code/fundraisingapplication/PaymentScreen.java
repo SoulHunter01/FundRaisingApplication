@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -13,8 +14,10 @@ import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -26,7 +29,10 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class PaymentScreen extends AppCompatActivity {
@@ -36,6 +42,7 @@ public class PaymentScreen extends AppCompatActivity {
     TextView target_of_goal;
     EditText YourContribution;
     Button paynow;
+    Switch aSwitch;
 
     private void animatelogo(){
 
@@ -64,14 +71,22 @@ public class PaymentScreen extends AppCompatActivity {
         target_of_goal.setText(target);
         YourContribution=findViewById(R.id.YourContribution);
         paynow=findViewById(R.id.paynow);
+        aSwitch=findViewById(R.id.switch_value);
+
+
+
 
 
         paynow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+
+
+
                 SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(PaymentScreen.this);
                 String username = preferences.getString("Username", "");
+
 
                 FirebaseFirestore db = FirebaseFirestore.getInstance();
                 db.collection("GoalInformation")
@@ -132,9 +147,7 @@ public class PaymentScreen extends AppCompatActivity {
                             }
                         });
 
-                Intent intent=new Intent(PaymentScreen.this,Payment_Activity.class);
-                intent.putExtra("price", YourContribution.getText().toString());
-
+                Intent intent=new Intent(PaymentScreen.this,RecyclerViewSpecificItem.class);
                 startActivity(intent);
             }
         });

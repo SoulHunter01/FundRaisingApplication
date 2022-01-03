@@ -30,12 +30,13 @@ public class Payment_Activity extends AppCompatActivity {
 
     String postData = "";
     private WebView mWebView;
+    String goal_title;
 
     private final String Jazz_MerchantID      = "MC30856";
     private final String Jazz_Password        = "h73ae46du5";
     private final String Jazz_IntegritySalt   = "18tx6dc0v4";
 
-    private static final String paymentReturnUrl="https://localhost/order.php";
+    private static final String paymentReturnUrl="http://localhost/order.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +51,8 @@ public class Payment_Activity extends AppCompatActivity {
         mWebView.setWebViewClient(new MyWebViewClient());
         webSettings.setDomStorageEnabled(true);
         mWebView.addJavascriptInterface(new FormDataInterface(), "FORMOUT");
+
+        goal_title = RecyclerViewSpecificItem.qr_title;
 
         Intent intentData = getIntent();
         String price = intentData.getStringExtra("price");
@@ -94,7 +97,7 @@ public class Payment_Activity extends AppCompatActivity {
         String pp_ProductID = "RETL";
         String pp_TxnCurrency = "PKR";
         String pp_BillReference = "billRef";
-        String pp_Description = "Description of transaction";
+        String pp_Description = goal_title;
         String pp_SecureHash = "";
         String pp_mpf_1 = "1";
         String pp_mpf_2 = "2";
@@ -229,7 +232,7 @@ public class Payment_Activity extends AppCompatActivity {
     private class FormDataInterface {
         @JavascriptInterface
         public void processFormData(String url, String formData) {
-            Intent i = new Intent(Payment_Activity.this, RecyclerViewSpecificItem.class);
+            Intent i = new Intent(Payment_Activity.this, PaymentScreen.class);
 
             System.out.println("Fundraising: Url:" + url + " form data " + formData);
             if (url.equals(paymentReturnUrl)) {

@@ -51,7 +51,7 @@
         android:layout_marginTop="10dp"
         android:textAlignment="center"
         android:textAllCaps="true"
-        android:textColor="@color/zxing_custom_possible_result_points"
+        android:textColor="#DC143C"
         android:textSize="15dp"
         android:textStyle="bold"></TextView>
 

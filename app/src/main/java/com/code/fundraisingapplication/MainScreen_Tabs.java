@@ -13,11 +13,13 @@ import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainScreen_Tabs extends AppCompatActivity {
     Button creategoalbutton;
     Button ChangeActiveStatus;
     Button btn_scan;
+    Button logout;
     Button show_ad;
     private AdView mAdView1;
     private AdView mAdView2;
@@ -28,6 +30,7 @@ public class MainScreen_Tabs extends AppCompatActivity {
         creategoalbutton=findViewById(R.id.creategoalbutton);
         ChangeActiveStatus=findViewById(R.id.ChangeActiveStatus);
         btn_scan = (Button) findViewById(R.id.btn_scan);
+        logout=(Button) findViewById(R.id.logout);
 
         AdView adView = new AdView(this);
 
@@ -67,6 +70,15 @@ public class MainScreen_Tabs extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(MainScreen_Tabs.this,Qr_Scan_Code.class);
+                startActivity(intent);
+            }
+        });
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                Intent intent=new Intent(MainScreen_Tabs.this,LoginScreen.class);
                 startActivity(intent);
             }
         });

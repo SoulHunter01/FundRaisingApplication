@@ -11,10 +11,14 @@ import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class MainActivity extends AppCompatActivity {
 
     private final int SPLASH_DELAY=2500;
     private ImageView imageView;
+    FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,14 +47,30 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void gotoMainActivity(){
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent newi=new Intent(MainActivity.this,LoginScreen.class);
-                startActivity(newi);
-                finish();
-            }
-        },SPLASH_DELAY);
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser == null) {
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Intent newi=new Intent(MainActivity.this,LoginScreen.class);
+                    startActivity(newi);
+                    finish();
+                }
+            },SPLASH_DELAY);
+
+        } else {
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Intent intent=new Intent(MainActivity.this,MainScreen_Tabs.class);
+                    startActivity(intent);
+                    finish();
+                }
+            },SPLASH_DELAY);
+
+        }
+
 
     }
 

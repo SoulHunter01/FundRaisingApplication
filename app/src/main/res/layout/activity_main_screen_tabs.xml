@@ -10,79 +10,91 @@
 
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/creategoalbutton"
-        android:layout_width="350dp"
+        android:id="@+id/logout"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="6dp"
-        android:layout_marginTop="14dp"
+        android:layout_marginBottom="45dp"
+        android:backgroundTint="#78039c"
+        android:text="Logout"
+        android:textColor="#ffffff"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ad1"></androidx.appcompat.widget.AppCompatButton>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/creategoalbutton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:layout_marginEnd="19dp"
+        android:layout_marginBottom="36dp"
+        android:background="@drawable/rounded_bars"
         android:backgroundTint="#78039c"
         android:text="Create Goal"
         android:textColor="#ffffff"
-        android:background="@drawable/rounded_bars"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/ChangeActiveStatus"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></androidx.appcompat.widget.AppCompatButton>
+        app:layout_constraintTop_toBottomOf="@+id/imageView"></androidx.appcompat.widget.AppCompatButton>
 
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/ChangeActiveStatus"
-        android:layout_width="350dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="6dp"
-        android:layout_marginTop="184dp"
-        android:backgroundTint="#78039c"
+        android:layout_marginStart="19dp"
+        android:layout_marginEnd="19dp"
+        android:layout_marginBottom="36dp"
         android:background="@drawable/rounded"
+        android:backgroundTint="#78039c"
         android:text="See Goals"
         android:textColor="#ffffff"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btn_scan"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></androidx.appcompat.widget.AppCompatButton>
+        app:layout_constraintTop_toBottomOf="@+id/creategoalbutton"></androidx.appcompat.widget.AppCompatButton>
 
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_scan"
-        android:layout_width="350dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="6dp"
-        android:layout_marginTop="350dp"
+        android:layout_marginStart="19dp"
+        android:layout_marginEnd="19dp"
+        android:layout_marginBottom="226dp"
+        android:background="@drawable/rounded"
         android:backgroundTint="#78039c"
         android:text="Scan QR"
-        android:background="@drawable/rounded"
         android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/ChangeActiveStatus" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_marginStart="106dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="105dp"
-        android:layout_marginBottom="491dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="40dp"
         android:src="@drawable/logo"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/creategoalbutton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/logout" />
 
     <com.google.android.gms.ads.AdView
         android:id="@+id/ad1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="22dp"
         app:adSize="BANNER"
         app:adUnitId="ca-app-pub-3940256099942544/6300978111"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/logout"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.005"></com.google.android.gms.ads.AdView>
-
+        app:layout_constraintTop_toTopOf="parent"></com.google.android.gms.ads.AdView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

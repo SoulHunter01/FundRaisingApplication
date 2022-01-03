@@ -77,7 +77,8 @@ public class CreateGoal extends AppCompatActivity implements AdapterView.OnItemS
     EditText description;
     EditText targetamount;
     Button creategoal;
-    EditText city;
+    Spinner spinner2;
+    String city;
     ImageView profile_image;
     DatabaseReference mDatabaseRef;
     StorageReference mStorageRef;
@@ -89,6 +90,7 @@ public class CreateGoal extends AppCompatActivity implements AdapterView.OnItemS
 
 
     private static final String[] paths = {"Education","Climate Change","Medical Support"};
+    private static final String[] cities = {"Lahore", "Islamabad", "Rawalpindi", "Multan", "Faisalabad", "Karachi", "Hyderabad", "New York", "Washington DC", "Florida", "London"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,13 +100,16 @@ public class CreateGoal extends AppCompatActivity implements AdapterView.OnItemS
         description=findViewById(R.id.description);
         targetamount=findViewById(R.id.targetamount);
         creategoal=findViewById(R.id.creategoalbutton);
-        city=findViewById(R.id.city);
+        spinner2=findViewById(R.id.city);
         spinner = (Spinner)findViewById(R.id.spinner);
         simpleProgressBar=findViewById(R.id.simpleProgressBar);
         mDatabaseRef=FirebaseDatabase.getInstance().getReference("uploads");
         mStorageRef=FirebaseStorage.getInstance().getReference("uploads");
         ArrayAdapter<String>adapter = new ArrayAdapter<String>(CreateGoal.this,
                 android.R.layout.simple_spinner_item,paths);
+
+        ArrayAdapter<String>adapter2 = new ArrayAdapter<String>(CreateGoal.this,
+                android.R.layout.simple_spinner_item,cities);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel channel = new NotificationChannel("Notif", "Notif", NotificationManager.IMPORTANCE_DEFAULT);
@@ -114,7 +119,11 @@ public class CreateGoal extends AppCompatActivity implements AdapterView.OnItemS
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
+        spinner.setOnItemSelectedListener(this);
+
+        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner2.setAdapter(adapter2);
+        spinner2.setOnItemSelectedListener(this);
 
         gobackbutton=findViewById(R.id.gobackbutton);
 
@@ -140,7 +149,7 @@ public class CreateGoal extends AppCompatActivity implements AdapterView.OnItemS
                 user.put("TargetAmount",targetamount.getText().toString());
                 user.put("Category",category);
                 user.put("Status","Active");
-                user.put("city", city.getText().toString());
+                user.put("city", city);
 
 
 // Add a new document with a generated ID
@@ -234,13 +243,12 @@ public class CreateGoal extends AppCompatActivity implements AdapterView.OnItemS
                             Toast.makeText(CreateGoal.this,"Upload Successful",Toast.LENGTH_LONG).show();
 
                             Upload upload = new Upload(downloadUrl,title.getText().toString().trim()
-                                    ,description.getText().toString(),targetamount.getText().toString(),category.toString(),"Active", city.getText().toString());
+                                    ,description.getText().toString(),targetamount.getText().toString(),category.toString(),"Active", city.toString());
                             String uploadId = mDatabaseRef.push().getKey();
                             mDatabaseRef.child(uploadId).setValue(upload);
                             title.setText("");
                             description.setText("");
                             targetamount.setText("");
-                            city.setText("");
 
 
 
@@ -304,17 +312,59 @@ public class CreateGoal extends AppCompatActivity implements AdapterView.OnItemS
     @Override
     public void onItemSelected(AdapterView<?> parent, View v, int position, long id) {
 
-        switch (position) {
-            case 0:
-                category=paths[0];
-                break;
-            case 1:
-                category=paths[1];
-                break;
-            case 2:
-                category=paths[2];
-                break;
+        Spinner spinner = (Spinner) parent;
+        Spinner spinner1 = (Spinner) parent;
 
+        if (spinner.getId() == R.id.spinner) {
+            switch (position) {
+                case 0:
+                    category=paths[0];
+                    break;
+                case 1:
+                    category=paths[1];
+                    break;
+                case 2:
+                    category=paths[2];
+                    break;
+
+            }
+        }
+        if (spinner1.getId() == R.id.city) {
+            switch (position) {
+                case 0:
+                    city=cities[0];
+                    break;
+                case 1:
+                    city=cities[1];
+                    break;
+                case 2:
+                    city=cities[2];
+                    break;
+                case 3:
+                    city=cities[3];
+                    break;
+                case 4:
+                    city=cities[4];
+                    break;
+                case 5:
+                    city=cities[5];
+                    break;
+                case 6:
+                    city=cities[6];
+                    break;
+                case 7:
+                    city=cities[7];
+                    break;
+                case 8:
+                    city=cities[8];
+                    break;
+                case 9:
+                    city=cities[9];
+                    break;
+                case 10:
+                    city=cities[10];
+                    break;
+            }
         }
     }
 

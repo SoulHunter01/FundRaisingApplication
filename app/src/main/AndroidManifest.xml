@@ -25,6 +25,10 @@
             android:name=".PaymentScreen"
             android:exported="false" />
 
+        <activity
+            android:name=".Payment_Activity"
+            android:exported="false" />
+
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-5438321547648425~3375550958" />

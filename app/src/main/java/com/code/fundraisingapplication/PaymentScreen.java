@@ -19,6 +19,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -81,9 +82,6 @@ public class PaymentScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
-
-
                 SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(PaymentScreen.this);
                 String username = preferences.getString("Username", "");
 
@@ -130,13 +128,6 @@ public class PaymentScreen extends AppCompatActivity {
                                                             Log.w(TAG, "Error adding document", e);
                                                         }
                                                     });
-
-
-
-                                            Intent intent1=new Intent(PaymentScreen.this,RecyclerViewSpecificItem.class);
-                                            setResult(RESULT_OK,intent1);
-                                            finish();
-
                                         }
 
 
@@ -147,13 +138,28 @@ public class PaymentScreen extends AppCompatActivity {
                             }
                         });
 
-                Intent intent=new Intent(PaymentScreen.this,Payment_Activity.class);
-                startActivity(intent);
+                Intent intent = new Intent(PaymentScreen.this, Payment_Activity.class);
+                intent.putExtra("price", YourContribution.getText().toString());
+
+                startActivityForResult(intent, 0);
             }
+
         });
+    }
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
-
-
-
+        // Check that it is the SecondActivity with an OK result
+        if (requestCode == 0 && resultCode == RESULT_OK) {
+            // Get String data from Intent
+            String ResponseCode = data.getStringExtra("pp_ResponseCode");
+            System.out.println("DateFn: ResponseCode:" + ResponseCode);
+            if (ResponseCode.equals("000")) {
+                Toast.makeText(getApplicationContext(), "Payment Success", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(getApplicationContext(), "Payment Failed", Toast.LENGTH_SHORT).show();
+            }
+            finish();
+        }
     }
 }

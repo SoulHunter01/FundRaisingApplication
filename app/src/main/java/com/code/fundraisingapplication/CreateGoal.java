@@ -77,6 +77,7 @@ public class CreateGoal extends AppCompatActivity implements AdapterView.OnItemS
     EditText description;
     EditText targetamount;
     Button creategoal;
+    EditText city;
     ImageView profile_image;
     DatabaseReference mDatabaseRef;
     StorageReference mStorageRef;
@@ -92,11 +93,12 @@ public class CreateGoal extends AppCompatActivity implements AdapterView.OnItemS
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_goal);
-         title=findViewById(R.id.title);
+        title=findViewById(R.id.title);
         profile_image=findViewById(R.id.profile_image);
-         description=findViewById(R.id.description);
-         targetamount=findViewById(R.id.targetamount);
-         creategoal=findViewById(R.id.creategoalbutton);
+        description=findViewById(R.id.description);
+        targetamount=findViewById(R.id.targetamount);
+        creategoal=findViewById(R.id.creategoalbutton);
+        city=findViewById(R.id.city);
         spinner = (Spinner)findViewById(R.id.spinner);
         simpleProgressBar=findViewById(R.id.simpleProgressBar);
         mDatabaseRef=FirebaseDatabase.getInstance().getReference("uploads");
@@ -138,6 +140,7 @@ public class CreateGoal extends AppCompatActivity implements AdapterView.OnItemS
                 user.put("TargetAmount",targetamount.getText().toString());
                 user.put("Category",category);
                 user.put("Status","Active");
+                user.put("city", city.getText().toString());
 
 
 // Add a new document with a generated ID
@@ -231,12 +234,13 @@ public class CreateGoal extends AppCompatActivity implements AdapterView.OnItemS
                             Toast.makeText(CreateGoal.this,"Upload Successful",Toast.LENGTH_LONG).show();
 
                             Upload upload = new Upload(downloadUrl,title.getText().toString().trim()
-                                    ,description.getText().toString(),targetamount.getText().toString(),category.toString(),"Active");
+                                    ,description.getText().toString(),targetamount.getText().toString(),category.toString(),"Active", city.getText().toString());
                             String uploadId = mDatabaseRef.push().getKey();
                             mDatabaseRef.child(uploadId).setValue(upload);
                             title.setText("");
                             description.setText("");
                             targetamount.setText("");
+                            city.setText("");
 
 
 

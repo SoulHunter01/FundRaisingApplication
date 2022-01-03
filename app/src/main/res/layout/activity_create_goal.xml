@@ -73,6 +73,21 @@
         android:textSize="15dp"
         android:textStyle="bold"></EditText>
 
+    <EditText
+        android:id="@+id/city"
+        android:layout_width="350dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="560dp"
+        android:layout_marginBottom="182dp"
+        android:background="@drawable/rounded_bars"
+        android:hint="Enter City...."
+        android:paddingStart="20dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="15dp"
+        android:textStyle="bold"></EditText>
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/creategoalbutton"
         :background="@drawable/rounded_bars"
@@ -80,7 +95,7 @@
         android:layout_height="40dp"
         android:layout_marginStart="20dp"
         android:background="@drawable/rounded_bars"
-        android:layout_marginTop="580dp"
+        android:layout_marginTop="630dp"
         android:backgroundTint="#78039c"
         android:text="Create Goal"
         android:textColor="#ffffff"></androidx.appcompat.widget.AppCompatButton>

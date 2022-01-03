@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -118,9 +119,13 @@ public class PaymentScreen extends AppCompatActivity {
 
 
 
-                                            Intent intent1=new Intent(PaymentScreen.this,RecyclerViewSpecificItem.class);
+                                            /*Intent intent1=new Intent(PaymentScreen.this,RecyclerViewSpecificItem.class);
                                             setResult(RESULT_OK,intent1);
-                                            finish();
+                                            finish();*/
+                                            Intent intent=new Intent(PaymentScreen.this,Payment_Activity.class);
+                                            intent.putExtra("price", YourContribution.getText().toString());
+
+                                            startActivityForResult(intent,0);
 
                                         }
 
@@ -131,16 +136,32 @@ public class PaymentScreen extends AppCompatActivity {
                                 }
                             }
                         });
-
-                Intent intent=new Intent(PaymentScreen.this,Payment_Activity.class);
-                intent.putExtra("price", YourContribution.getText().toString());
-
-                startActivity(intent);
             }
         });
 
 
 
 
+
+
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        // Check that it is the SecondActivity with an OK result
+        if (requestCode == 0 && resultCode == RESULT_OK) {
+            // Get String data from Intent
+            String ResponseCode = data.getStringExtra("pp_ResponseCode");
+            System.out.println("FundRaising: ResponseCode:" + ResponseCode);
+            if(ResponseCode.equals("000")) {
+                Toast.makeText(getApplicationContext(), "Payment Success", Toast.LENGTH_SHORT).show();
+            }
+            else
+            {
+                Toast.makeText(getApplicationContext(), "Payment Failed", Toast.LENGTH_SHORT).show();
+            }
+            finish();
+        }
     }
 }

@@ -28,7 +28,7 @@
 
         <activity
             android:name=".generate_QR_Code"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".Qr_Scan_Code"
             android:exported="false" />
@@ -38,15 +38,15 @@
         <activity
             android:name=".MainScreen_Tabs"
             android:exported="true">
-
-
-
         </activity>
         <activity
             android:name=".RecyclerViewList"
             android:exported="true"></activity>
         <activity
             android:name=".CreateGoal"
+            android:exported="false" />
+        <activity
+            android:name=".Payment_Activity"
             android:exported="false" />
         <activity
             android:name=".ForgotPassword"

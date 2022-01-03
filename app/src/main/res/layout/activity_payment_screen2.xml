@@ -9,8 +9,6 @@
     tools:context=".PaymentScreen">
 
 
-
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="200dp"
@@ -45,6 +43,7 @@
         android:textSize="20dp"
         android:textStyle="bold" />
 
+
     <TextView
         android:id="@+id/targetamount_of_goal"
         android:layout_width="207dp"
@@ -57,18 +56,18 @@
         android:textStyle="bold"
         tools:ignore="MissingConstraints" />
 
-
     <EditText
         android:id="@+id/YourContribution"
         android:layout_width="207dp"
         android:layout_height="50dp"
         android:layout_marginLeft="100dp"
         android:layout_marginTop="450dp"
-        android:hint="Enter Your Contribution..."
+        android:hint="Your Contribution..."
         android:paddingStart="20dp"
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textColor="@color/white"
+        android:textColorHint="@color/white"
         android:textSize="20dp"
         android:textStyle="bold"
         tools:ignore="MissingConstraints" />

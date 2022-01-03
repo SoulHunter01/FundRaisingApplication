@@ -154,16 +154,17 @@ public class PaymentScreen extends AppCompatActivity {
                                                               }
                                                           });
 
-                                                  Intent intent = new Intent(PaymentScreen.this, Payment_Activity.class);
-                                                  intent.putExtra("price", YourContribution.getText().toString());
 
-                                                  startActivityForResult(intent, 0);
                                               }
 
                                               else{
 
                                                   YourContribution.setError("Enter Amount Please...");
                                               }
+
+                                              Intent intent = new Intent(PaymentScreen.this, Payment_Activity.class);
+                                              intent.putExtra("price", YourContribution.getText().toString());
+                                              startActivityForResult(intent, 0);
                                           }
 
             });

@@ -24,7 +24,6 @@
         <activity
             android:name=".PaymentScreen"
             android:exported="false" />
-
         <activity
             android:name=".Payment_Activity"
             android:exported="false" />
@@ -44,7 +43,7 @@
             android:exported="false" />
         <activity
             android:name=".MainScreen_Tabs"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".RecyclerViewList"
             android:exported="true" />

@@ -41,6 +41,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class RecyclerViewSpecificItem extends AppCompatActivity {
 
@@ -61,18 +62,17 @@ public class RecyclerViewSpecificItem extends AppCompatActivity {
     String targetamount_get = null;
     String status_get = null;
 
-    private void animatelogo(){
+    private void animatelogo() {
 
         RotateAnimation rotate = new RotateAnimation(0, 360, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
         rotate.setDuration(10000);
         rotate.setRepeatCount(Animation.INFINITE);
         rotate.setInterpolator(new LinearInterpolator());
-        ImageView image= (ImageView) findViewById(R.id.imageView);
+        ImageView image = (ImageView) findViewById(R.id.imageView);
         image.startAnimation(rotate);
 
 
     }
-
 
 
     @Override
@@ -83,7 +83,7 @@ public class RecyclerViewSpecificItem extends AppCompatActivity {
         description_of_goal = findViewById(R.id.description_of_goal);
         category_of_goal = findViewById(R.id.category_of_goal);
         targetamount_of_goal = findViewById(R.id.targetamount_of_goal);
-        changegoalstatus = findViewById(R.id.changegoalstatus);
+        changegoalstatus = findViewById(R.id.goal_status_change);
         status_of_goal = findViewById(R.id.status_of_goal);
         applypayment = findViewById(R.id.applypayment);
         generate_QR = findViewById(R.id.generate_QR);
@@ -91,7 +91,6 @@ public class RecyclerViewSpecificItem extends AppCompatActivity {
         animatelogo();
 
         Intent intent = getIntent();
-
 
 
         title_get = intent.getStringExtra("Title");
@@ -110,70 +109,47 @@ public class RecyclerViewSpecificItem extends AppCompatActivity {
         generate_QR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(RecyclerViewSpecificItem.this,generate_QR_Code.class);
+                Intent intent = new Intent(RecyclerViewSpecificItem.this, generate_QR_Code.class);
                 startActivity(intent);
             }
         });
 
-
-
-
-
-
         changegoalstatus.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-
-                FirebaseFirestore db = FirebaseFirestore.getInstance();
-                db.collection("GoalInformation")
-                        .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            public void onClick(View view) {
+                DatabaseReference questionsRef = FirebaseDatabase.getInstance().getReference().child("uploads");
+                questionsRef.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    public void onDataChange(DataSnapshot questionsSnapshot) {
+                        for (DataSnapshot questionSnapshot: questionsSnapshot.getChildren()) {
+                            DataSnapshot name_of_goal_in_database=questionSnapshot.child("mName");
+                            String value=name_of_goal_in_database.getValue().toString().toLowerCase(Locale.ROOT).trim();
+                            String title_get=title_of_goal.getText().toString().toLowerCase(Locale.ROOT).trim();
 
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                String getTitle = (String) document.getData().get("Title");
-                                String getCategory = (String) document.getData().get("Category");
-                                String getDescription = (String) document.getData().get("Description");
-                                String getTargetAmount = (String) document.getData().get("TargetAmount");
-                                String getStatus = (String) document.getData().get("Status");
+                            if(value.equals(title_get)){
 
-                                if (getTitle.equals(title_of_goal.getText().toString()) &&
-                                        getCategory.equals(category_of_goal.getText().toString()) &&
-                                        getDescription.equals(description_of_goal.getText().toString()) &&
-                                        getTargetAmount.equals(targetamount_of_goal.getText().toString()) &&
-                                        getStatus.equals(status_of_goal.getText().toString())
-                                ) {
-
-                                    if (getStatus.equals("Active")) {
-                                        db.collection("GoalInformation").document(document.getId())
-                                                .update("Status", "Not Active");
-                                        status_of_goal.setText("Not Active");
-                                        Status_Value[0] = "Active";
-
-
-                                    } else {
-                                        db.collection("GoalInformation").document(document.getId())
-                                                .update("Status", "Active");
-                                        status_of_goal.setText("Active");
-                                        Status_Value[0] = "Not Active";
-
-                                    }
-
+                                DataSnapshot status_of_goal_in_database=questionSnapshot.child("mStatus");
+                                String status=status_of_goal_in_database.getValue().toString();
+                                if(status.equals("Active")){
+                                    status_of_goal_in_database.getRef().setValue("Not Active");
+                                    status_of_goal.setText("Not Active");
+                                }else{
+                                    status_of_goal_in_database.getRef().setValue("Active");
+                                    status_of_goal.setText("Active");
                                 }
+
+
                             }
-                        } else {
-                            Log.w("TAGXAXA", "Error getting documents.", task.getException());
+
                         }
-
-
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        throw databaseError.toException();
                     }
                 });
-
-
             }
         });
-
 
         applypayment.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -202,7 +178,6 @@ public class RecyclerViewSpecificItem extends AppCompatActivity {
         description_of_goal = findViewById(R.id.description_of_goal);
         category_of_goal = findViewById(R.id.category_of_goal);
         targetamount_of_goal = findViewById(R.id.targetamount_of_goal);
-        changegoalstatus = findViewById(R.id.changegoalstatus);
         status_of_goal = findViewById(R.id.status_of_goal);
         applypayment = findViewById(R.id.applypayment);
 
@@ -224,10 +199,6 @@ public class RecyclerViewSpecificItem extends AppCompatActivity {
                                     String targetAmount = (String) document.getData().get("TargetAmount");
                                     targetamount_of_goal.setText(targetAmount);
                                     targetamount_of_goal.setTextColor(Color.WHITE);
-
-
-
-
 
                                 }
 

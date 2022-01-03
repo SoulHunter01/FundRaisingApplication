@@ -83,7 +83,7 @@ public class RecyclerViewList extends AppCompatActivity implements AdapterView.O
                 for(DataSnapshot postSnapshot:snapshot.getChildren()){
                         Upload upload=postSnapshot.getValue(Upload.class);
                         ls.add(upload);
-                        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(RecyclerViewList.this, 2);
+                        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(RecyclerViewList.this, 1);
                         rv.setLayoutManager(mLayoutManager);
                         adapter = new RecyclerViewAdapter(ls, RecyclerViewList.this);
                         rv.setAdapter(adapter);
@@ -133,10 +133,15 @@ public class RecyclerViewList extends AppCompatActivity implements AdapterView.O
                 filteredList.add(item);
         }
 
+        SpacingItemDecorator spacingItemDecorator=new SpacingItemDecorator(30);
+        rv.addItemDecoration(spacingItemDecorator);
         adapter1 = new RecyclerViewAdapter(ls,RecyclerViewList.this);
         rv.setAdapter(adapter1);
         adapter1.filterList(filteredList);
         adapter1.notifyDataSetChanged();
+
+
+
     }
 
     private void filter4(String text) {

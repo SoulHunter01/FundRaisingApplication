@@ -169,7 +169,6 @@ public class RecyclerViewList extends AppCompatActivity implements AdapterView.O
         Spinner spinner1 = (Spinner)adapterView;
 
         if (spinner.getId() == R.id.spinner) {
-            Toast.makeText(this, paths[i], Toast.LENGTH_LONG).show();
             if (paths[i] != "Categories") {
                 filter2(paths[i]);
             } else {
@@ -177,7 +176,6 @@ public class RecyclerViewList extends AppCompatActivity implements AdapterView.O
             }
         }
         if (spinner1.getId() == R.id.spinner2) {
-            Toast.makeText(this, cities[i], Toast.LENGTH_LONG).show();
             if (cities[i] != "City") {
                 filter4(cities[i]);
             } else {

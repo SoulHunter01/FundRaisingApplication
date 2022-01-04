@@ -7,8 +7,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.RotateAnimation;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -25,6 +29,18 @@ import java.util.Map;
 
 public class SignUpScreen extends AppCompatActivity {
 
+    private void animatelogo(){
+
+        RotateAnimation rotate = new RotateAnimation(0, 360, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+        rotate.setDuration(10000);
+        rotate.setRepeatCount(Animation.INFINITE);
+        rotate.setInterpolator(new LinearInterpolator());
+        ImageView image= (ImageView) findViewById(R.id.imageview_logo2);
+        image.startAnimation(rotate);
+
+
+    }
+
     Button register;
     EditText firstname;
     EditText lastname;
@@ -32,12 +48,12 @@ public class SignUpScreen extends AppCompatActivity {
     EditText password;
     FirebaseAuth mAuth;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_screen);
 
+        animatelogo();
         register=(Button)findViewById(R.id.getregistrationbutton);
         firstname=(EditText) findViewById(R.id.getfirstname);
         lastname=(EditText)findViewById(R.id.getlastname);

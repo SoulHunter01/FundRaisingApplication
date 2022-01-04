@@ -22,8 +22,6 @@ public class MainScreen_Tabs extends AppCompatActivity {
     Button logout;
     Button show_ad;
     Button seecontributions;
-    private AdView mAdView1;
-    private AdView mAdView2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,24 +31,6 @@ public class MainScreen_Tabs extends AppCompatActivity {
         btn_scan = (Button) findViewById(R.id.btn_scan);
         logout=(Button) findViewById(R.id.logout);
         seecontributions=findViewById(R.id.seecontributions);
-
-        AdView adView = new AdView(this);
-
-        adView.setAdSize(AdSize.BANNER);
-
-        adView.setAdUnitId("ca-app-pub-3940256099942544/6300978111");
-
-        MobileAds.initialize(this, new OnInitializationCompleteListener() {
-            @Override
-            public void onInitializationComplete(InitializationStatus initializationStatus) {
-            }
-        });
-
-        mAdView1 = findViewById(R.id.ad1);
-        AdRequest adRequest1 = new AdRequest.Builder().build();
-        mAdView1.loadAd(adRequest1);
-
-
 
         creategoalbutton.setOnClickListener(new View.OnClickListener() {
             @Override

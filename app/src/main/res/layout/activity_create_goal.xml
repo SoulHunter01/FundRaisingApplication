@@ -96,7 +96,7 @@
         android:layout_height="40dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="630dp"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="@color/white"
         android:text="Create Goal"
         android:textColor="#FFF"></androidx.appcompat.widget.AppCompatButton>
 

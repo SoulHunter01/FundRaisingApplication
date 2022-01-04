@@ -96,9 +96,10 @@
         android:layout_height="40dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="630dp"
+        android:background="@drawable/rounded_bars"
         android:backgroundTint="@color/white"
         android:text="Create Goal"
-        android:textColor="#FFF"></androidx.appcompat.widget.AppCompatButton>
+        android:textColor="#000"></androidx.appcompat.widget.AppCompatButton>
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profile_image"

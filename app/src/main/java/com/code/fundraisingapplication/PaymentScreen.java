@@ -55,7 +55,6 @@ public class PaymentScreen extends AppCompatActivity {
     TextView target_of_goal;
     EditText YourContribution;
     Button paynow;
-    Switch aSwitch;
     DatabaseReference mDatabaseRef;
 
     String CHANNEL_ID="Channel 1";
@@ -88,9 +87,6 @@ public class PaymentScreen extends AppCompatActivity {
         target_of_goal.setText(target);
         YourContribution = findViewById(R.id.YourContribution);
         paynow = findViewById(R.id.paynow);
-        aSwitch = findViewById(R.id.switch_value);
-
-
 
             paynow.setOnClickListener(new View.OnClickListener() {
                                           @Override
